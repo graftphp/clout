@@ -1,0 +1,12 @@
+{
+    "name":"graftphp/clout",
+    "description":"clout cms",
+    "keywords": ["cms", "php"],
+    "homepage": "https://github.com/graftphp/clout",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "GraftPHP\\Clout\\": "src/"
+        }
+    }
+}
