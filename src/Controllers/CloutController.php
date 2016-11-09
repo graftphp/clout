@@ -14,7 +14,7 @@ class CloutController
     {
         if (GRAFT_CONFIG['DBHost'] == '' ||
             GRAFT_CONFIG['DBName'] == '' ||
-            GRAFT_CONFIG['DBUser']) {
+            GRAFT_CONFIG['DBUser'] == '') {
             die('A database connection is required to run clout.');
         }
 
