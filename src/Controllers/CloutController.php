@@ -12,6 +12,12 @@ class CloutController
 
     public function __construct()
     {
+        if (GRAFT_CONFIG['DBHost'] == '' ||
+            GRAFT_CONFIG['DBName'] == '' ||
+            GRAFT_CONFIG['DBUser']) {
+            die('A database connection is required to run clout.');
+        }
+
         // instance everything so the db gets setup
         // probably need a better way to do this
         // in the future #TODO
