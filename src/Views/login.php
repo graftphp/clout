@@ -22,8 +22,8 @@
             <div class="col-sm-4 col-sm-offset-4">
                 <form method="post" action="/clout/login">
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" required value="<?=isset($email)?$email:''?>">
+                        <label for="username">Username</label>
+                        <input type="username" name="username" class="form-control" required value="<?=isset($username)?$username:''?>">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>

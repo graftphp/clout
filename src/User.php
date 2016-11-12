@@ -17,6 +17,11 @@ class User extends Model
         ["active", "tinyint"],
     ];
 
+    static public $db_defaultdata = [
+        // iloveclout
+        ['1', 'webmaster', '$2y$10$hUHmNbTy2iccHE65W.swyuJd061zT2Zxsy09d7IT3/pGIe0hR6xpK', '1'],
+    ];
+
     public function fetch($username)
     {
         $d = new DB();
@@ -24,7 +29,7 @@ class User extends Model
                ->where('username', '=', $username)
                ->first();
 
-        if (is_array($r)) {
+        if ($r) {
             return $r;
         } else {
             return false;

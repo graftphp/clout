@@ -12,18 +12,20 @@ class SessionController
     public function create()
     {
         $user = new User();
-        if ($test = $user->fetch($_POST['email'])) {
-            if (password_verify($_POST['password'], $test['password'])) {
-                $_SESSION['userid'] = $test['id'];
+        if ($test = $user->fetch($_POST['username'])) {
+            if (password_verify($_POST['password'], $test->password)) {
+                $_SESSION['userid'] = $test->id;
                 Functions::redirect('/clout/home');
             }
         }
+
         Functions::redirect('/clout');
     }
 
     public function delete()
     {
         session_destroy();
+
         Functions::redirect('/clout');
     }
 
