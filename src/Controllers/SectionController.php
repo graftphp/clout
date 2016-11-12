@@ -51,18 +51,19 @@ class SectionController extends CloutController
 
         $ft = new FieldType();
         $this->data['fieldtypes'] = $ft->all();
-        
+
         $f = new Field();
         $this->data['fields'] = [];
 
         View::Render('settings.sections.edit', $this->data, Settings::viewFolder());
     }
 
-    public function store()
+    public function update()
     {
-        $section = new Section();
+        $section = Section::find($_SERVER['QUERY_STRING'], 'id');
         $section->name = $_POST['name'];
         $section->slug = Functions::URLSafe($_POST['name']);
+        d($section);
         $section->save();
 
         if (count($_POST['field-name']) > 1) {
