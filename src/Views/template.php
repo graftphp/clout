@@ -15,11 +15,11 @@
         <div class="container-fluid">
 
             <div class="navbar-header">
-                <button 
-                    type="button" 
-                    class="navbar-toggle collapsed" 
-                    data-toggle="collapse" 
-                    data-target="#master-navbar" 
+                <button
+                    type="button"
+                    class="navbar-toggle collapsed"
+                    data-toggle="collapse"
+                    data-target="#master-navbar"
                     aria-expanded="false"
                 >
                     <span class="sr-only">Toggle navigation</span>
@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/clout/home">Clout</a>                    
+                <a class="navbar-brand" href="/clout/home">Clout</a>
             </div>
 
             <div class="collapse navbar-collapse" id="master-navbar">
@@ -37,21 +37,21 @@
                             <span class="glyphicon glyphicon-home"></span>
                         </a>
                     </li>
-                
+
                     <?php if($sections) : ?>
                         <?php foreach($sections as $s) : ?>
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <?=$s['name']?>
+                                <?= $s->name ?>
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/clout/sections/<?=$s['slug']?>">
+                                    <a href="/clout/sections/<?= $s->slug ?>">
                                         <span class="glyphicon glyphicon-th-list"></span>
                                         View
                                     </a>
-                                    <a href="/clout/sections/<?=$s['slug']?>/create">
+                                    <a href="/clout/sections/<?= $s->slug ?>/create">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         Add Record
                                     </a>
@@ -85,7 +85,7 @@
                                     Report a problem
                                 </a>
                             </li>
-                        </ul>                        
+                        </ul>
                     </li>
                     <li><a href="/clout/logout">
                         <span class="glyphicon glyphicon-log-out"></span>
@@ -100,7 +100,7 @@
     <p>&nbsp;</p>
 
     <div class="col-sm-12">
-        
+
         {body}
 
     </div>
