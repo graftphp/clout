@@ -50,7 +50,7 @@
                             </button>
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="field-name[]" class="form-control" value="<?=$f['name']?>">
+                                <input type="text" name="field-name[]" class="form-control" value="<?=$f->name?>">
                                 <label>Type</label>
                                 <select name="field-type[]" class="form-control">
                                     <?php foreach ($fieldtypes as $ft): ?>

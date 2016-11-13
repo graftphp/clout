@@ -34,7 +34,7 @@ class SectionController extends CloutController
         View::Render('settings.sections.list', $this->data,Settings::viewFolder());
     }
 
-    public function post()
+    public function store()
     {
         $section = new Section();
         $section->name = $_POST['name'];
