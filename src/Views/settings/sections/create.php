@@ -1,9 +1,9 @@
 {template:template}
 
 {body}
-    
+
     <h1>Create a Section</h1>
-    
+
     <form method="post" action="/clout/settings/sections/store">
         <div class="form-group">
             <label for="name">Section Name</label>

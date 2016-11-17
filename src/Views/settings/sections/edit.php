@@ -4,7 +4,7 @@
 
     <h1>Update a Section</h1>
 
-    <form method="post" action="/clout/settings/sections/update?<?=$section->id;?>">
+    <form method="post" action="/clout/settings/sections/update?<?= $section->id ?>">
         <div class="form-group">
             <label for="name">Section Name</label>
             <input type="text" name="name" class="form-control" required
@@ -31,7 +31,7 @@
                                 <label>Type</label>
                                 <select name="field-type[]" class="form-control">
                                     <?php foreach ($fieldtypes as $ft): ?>
-                                    <option value="<?=$ft->id?>"><?=$ft->name?></option>
+                                    <option value="<?=$ft->id?>"><?= $ft->name ?></option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
@@ -50,11 +50,11 @@
                             </button>
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="field-name[]" class="form-control" value="<?=$f->name?>">
+                                <input type="text" name="field-name[]" class="form-control" value="<?= $f->name ?>">
                                 <label>Type</label>
                                 <select name="field-type[]" class="form-control">
                                     <?php foreach ($fieldtypes as $ft): ?>
-                                    <option value="<?=$ft->id?>"><?=$ft->name?></option>
+                                    <option value="<?=$ft->id ?>"><?= $ft->name ?></option>
                                     <?php endforeach;?>
                                 </select>
                             </div>

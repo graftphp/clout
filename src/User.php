@@ -22,18 +22,4 @@ class User extends Model
         ['1', 'webmaster', '$2y$10$hUHmNbTy2iccHE65W.swyuJd061zT2Zxsy09d7IT3/pGIe0hR6xpK', '1'],
     ];
 
-    public function fetch($username)
-    {
-        $d = new DB();
-        $r = $d->table(self::$db_tablename)
-               ->where('username', '=', $username)
-               ->first();
-
-        if ($r) {
-            return $r;
-        } else {
-            return false;
-        }
-    }
-
 }

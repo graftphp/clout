@@ -63,13 +63,12 @@ class SectionController extends CloutController
         $section = Section::find($_SERVER['QUERY_STRING'], 'id');
         $section->name = $_POST['name'];
         $section->slug = Functions::URLSafe($_POST['name']);
-        d($section);
         $section->save();
 
         if (count($_POST['field-name']) > 1) {
             for($f = 1; $f < count($_POST['field-name']); $f++) {
                 $o = new Field();
-                $o->id = ($_POST['field-name'][$f] != '' ? $_POST['field-name'][$f] : null);
+                $o->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);
                 $o->section = $section->id;
                 $o->name = $_POST['field-name'][$f];
                 $o->type = $_POST['field-type'][$f];

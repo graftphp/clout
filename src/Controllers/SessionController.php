@@ -11,9 +11,10 @@ class SessionController
 
     public function create()
     {
-        $user = new User();
-        if ($test = $user->fetch($_POST['username'])) {
-            if (password_verify($_POST['password'], $test->password)) {
+        if ( $test = User::find($_POST['username'], 'username') )
+        {
+            if (password_verify($_POST['password'], $test->password))
+            {
                 $_SESSION['userid'] = $test->id;
                 Functions::redirect('/clout/home');
             }

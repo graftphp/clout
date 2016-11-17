@@ -19,7 +19,7 @@ class FieldType extends Model
     static public $db_defaultdata = [
         ['1', 'String', 'Text, up to 255 characters', 'varchar(255)'],
         ['2', 'Number', 'Whole number, -2147483648 to 2147483647 ', 'int'],
-        ['3', 'Date', '', 'date'],
+        ['3', 'Date', 'Date', 'date'],
     ];
 
 }
