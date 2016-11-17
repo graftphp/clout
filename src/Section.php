@@ -19,12 +19,7 @@ class Section extends Model
 
     public function sectionFields()
     {
-        $db = new DB();
-        $f = $db->table(Field::$db_tablename)
-            ->where('section', '=', $this->id)
-            ->get();
-
-        return $f ? $f : [];
+        return Field::where('section', '=', $this->id)->get();
     }
 
 }

@@ -24,7 +24,11 @@ class SectionController extends CloutController
 
     public function delete()
     {
-        Section::delete($_SERVER['QUERY_STRING']);
+        $section = Section::find($_SERVER['QUERY_STRING']);
+        foreach($section->sectionFields() as $field) {
+            $field->delete();
+        }
+        $section->delete();
 
         Functions::redirect('/clout/settings/sections');
     }
@@ -52,9 +56,6 @@ class SectionController extends CloutController
         $ft = new FieldType();
         $this->data['fieldtypes'] = $ft->all();
 
-        $f = new Field();
-        $this->data['fields'] = [];
-
         View::Render('settings.sections.edit', $this->data, Settings::viewFolder());
     }
 
@@ -65,8 +66,19 @@ class SectionController extends CloutController
         $section->slug = Functions::URLSafe($_POST['name']);
         $section->save();
 
+        // delete fields not in the POST data
+        foreach($section->sectionFields() as $field) {
+            for($f = 1; $f < count($_POST['field-id']); $f++) {
+                if ($field->id == $_POST['field-id'][$f]) {
+                    continue;
+                }
+                $field->delete();
+            }
+        }
+
+        // add/update fields in the POST data
         if (count($_POST['field-name']) > 1) {
-            for($f = 1; $f < count($_POST['field-name']); $f++) {
+            for($f = 1; $f < count($_POST['field-id']); $f++) {
                 $o = new Field();
                 $o->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);
                 $o->section = $section->id;

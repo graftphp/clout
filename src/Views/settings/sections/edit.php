@@ -41,7 +41,7 @@
             </div>
             <?php foreach($section->sectionFields() as $f) : ?>
             <div class="field">
-                <input type="hidden" name="field-id[]" value="">
+                <input type="hidden" name="field-id[]" value="<?= $f->id ?>">
                 <div class="form-inline">
                     <div class="panel panel-default">
                         <div class="panel-body">

@@ -10,7 +10,7 @@ class RecordController extends CloutController
         echo "Create $section";
     }
 
-    public function show($section) 
+    public function show($section)
     {
         echo $section;
     }
