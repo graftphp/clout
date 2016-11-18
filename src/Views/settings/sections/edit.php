@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <?php foreach($section->sectionFields() as $f) : ?>
+            <?php foreach($section->fields() as $f) : ?>
             <div class="field">
                 <input type="hidden" name="field-id[]" value="<?= $f->id ?>">
                 <div class="form-inline">

@@ -5,9 +5,9 @@ namespace GraftPHP\Clout\Controllers;
 use GraftPHP\Clout\Field;
 use GraftPHP\Clout\FieldType;
 use GraftPHP\Clout\Section;
+use GraftPHP\Clout\Settings;
 use GraftPHP\Framework\Functions;
 use GraftPHP\Framework\View;
-use GraftPHP\Clout\Settings;
 
 class SectionController extends CloutController
 {
@@ -25,7 +25,7 @@ class SectionController extends CloutController
     public function delete()
     {
         $section = Section::find($_SERVER['QUERY_STRING']);
-        foreach($section->sectionFields() as $field) {
+        foreach($section->fields() as $field) {
             $field->delete();
         }
         $section->delete();
@@ -67,7 +67,7 @@ class SectionController extends CloutController
         $section->save();
 
         // delete fields not in the POST data
-        foreach($section->sectionFields() as $field) {
+        foreach($section->fields() as $field) {
             $del = true;
             for($f = 1; $f < count($_POST['field-id']); $f++) {
                 if (intval($field->id) == intval($_POST['field-id'][$f])) {

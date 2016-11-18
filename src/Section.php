@@ -17,7 +17,7 @@ class Section extends Model
         ['slug', 'varchar(255)'],
     ];
 
-    public function sectionFields()
+    public function Fields()
     {
         return Field::where('section', '=', $this->id)->get();
     }
