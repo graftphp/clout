@@ -31,7 +31,9 @@
                                 <label>Type</label>
                                 <select name="field-type[]" class="form-control">
                                     <?php foreach ($fieldtypes as $ft): ?>
-                                    <option value="<?=$ft->id?>"><?= $ft->name ?></option>
+                                    <option value="<?=$ft->id?>">
+                                        <?= $ft->name ?>
+                                    </option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
@@ -54,7 +56,9 @@
                                 <label>Type</label>
                                 <select name="field-type[]" class="form-control">
                                     <?php foreach ($fieldtypes as $ft): ?>
-                                    <option value="<?=$ft->id ?>"><?= $ft->name ?></option>
+                                    <option value="<?=$ft->id ?>" <?= $f->type == $ft->id ? ' selected' : '' ?>>
+                                        <?= $ft->name ?>
+                                    </option>
                                     <?php endforeach;?>
                                 </select>
                             </div>
