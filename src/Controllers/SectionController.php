@@ -45,7 +45,7 @@ class SectionController extends CloutController
         $section->slug = Functions::URLSafe($_POST['name']);
         $section->save();
 
-        Functions::redirect('/clout/settings/sections');
+        Functions::redirect('/clout/settings/sections/' . $section->slug);
     }
 
     public function show($slug = null)
@@ -68,10 +68,13 @@ class SectionController extends CloutController
 
         // delete fields not in the POST data
         foreach($section->sectionFields() as $field) {
+            $del = true;
             for($f = 1; $f < count($_POST['field-id']); $f++) {
-                if ($field->id == $_POST['field-id'][$f]) {
-                    continue;
+                if (intval($field->id) == intval($_POST['field-id'][$f])) {
+                    $del = false;
                 }
+            }
+            if ($del) {
                 $field->delete();
             }
         }
@@ -88,7 +91,7 @@ class SectionController extends CloutController
             }
         }
 
-        Functions::redirect('/clout/settings/sections');
+        Functions::redirect('/clout/settings/sections/' . $section->slug);
     }
 
 }
