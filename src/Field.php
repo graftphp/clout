@@ -16,4 +16,9 @@ class Field extends Model
         ['name', 'varchar(255)'],
     ];
 
+    public function type()
+    {
+        return FieldType::where('id', '=', $this->type)->get()->first();
+    }
+
 }

@@ -21,8 +21,10 @@ class CloutController
         // instance everything so the db gets setup
         // probably need a better way to do this
         // in the future #TODO
+        \GraftPHP\Clout\Data::build();
         \GraftPHP\Clout\Field::build();
         \GraftPHP\Clout\FieldType::build();
+        \GraftPHP\Clout\Record::build();
         \GraftPHP\Clout\Section::build();
         \GraftPHP\Clout\User::build();
 

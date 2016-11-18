@@ -2,6 +2,8 @@
 
 namespace GraftPHP\Clout;
 
+use GraftPHP\Framework\Model;
+
 class Data extends Model
 {
 
