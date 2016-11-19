@@ -6,6 +6,7 @@ use GraftPHP\Clout\Data;
 use GraftPHP\Clout\Record;
 use GraftPHP\Clout\Section;
 use GraftPHP\Clout\Settings;
+use GraftPHP\Clout\Output;
 use GraftPHP\Framework\Functions;
 use GraftPHP\Framework\View;
 
@@ -14,7 +15,7 @@ class RecordController extends CloutController
 
     public function create($section)
     {
-    	$this->data['section'] = Section::find($section, 'slug');
+        $this->data['section'] = Section::find($section, 'slug');
 
         View::Render('record.create', $this->data, Settings::viewFolder());
     }
@@ -23,7 +24,9 @@ class RecordController extends CloutController
     {
         $this->data['section'] = Section::find($section, 'slug');
 
-        $this->data['records'] = Record::where('section', '=', $this->data['section']->id)->get();
+        $this->data['records'] = Output::section($section)->all();
+
+        dd($this->data['records']);
 
         View::Render('record.list', $this->data, Settings::viewFolder());
     }

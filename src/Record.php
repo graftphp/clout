@@ -14,6 +14,4 @@ class Record extends Model
         ['section', 'int'],
     ];
 
-    
-
 }
