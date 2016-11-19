@@ -26,14 +26,14 @@
                 <tr>
                     <td><?= $record->id ?></td>
                     <?php foreach ($section->fields() as $field) : ?>
-                    <td>~~~</td>
+                    <td><?= $record->{$field->name} ?></td>
                     <?php endforeach; ?>
                     <td width="50">
-                        <a href="/clout/sections/<?= $section->slug ?>">
+                        <a href="/clout/sections/<?= $section->slug ?>/<?= $record->id ?>/edit">
                             <span class="glyphicon glyphicon-edit"></span>
                         </a>
 
-                        <a href="/clout/sections/delete?<?= $section->id ?>"
+                        <a href="/clout/sections/<?= $section->slug ?>/<?= $record->id ?>/delete"
                         onclick="return confirm('Delete this section?');">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>

@@ -3,6 +3,7 @@
 namespace GraftPHP\Clout;
 
 use GraftPHP\Clout\Section;
+use GraftPHP\Framework\DB;
 use GraftPHP\Framework\magicCall;
 
 Class Output
@@ -10,28 +11,48 @@ Class Output
 
     use MagicCall;
 
+    public function all()
+    {
+        $db = new DB();
+        $this->sql .= " GROUP BY r.id;";
+        $q = $db->db->query($this->sql);
+        $res = $q->fetchAll(\PDO::FETCH_OBJ);
+
+        $out = new \GraftPHP\Framework\Data();
+        foreach($res as $row) {
+            $out->append( $row );
+        }
+
+        return $out;
+    }
+
+    public function find($id)
+    {
+        $this->sql .= "\r\n AND r.id = " . intval($id);
+        $out = $this->all();
+        $out = reset($out);
+
+        if (empty($out->id)) {
+            return false;
+        } else {
+            return $out;
+        }
+    }
+
     private function section_func($slug)
     {
         $section = Section::find($slug, 'slug');
-        d($section);
 
-        $sql = "SELECT r.id";
+        $this->sql = "SELECT r.id";
         foreach ( $section->fields() as $field ) {
             $type = $field->type();
-            $sql .= ",\r\n GROUP_CONCAT(IF(d.field = " . $field->id . ", " . $type->datafield . ", NULL)) AS " . $field->name;
+            $this->sql .= ",\r\n GROUP_CONCAT(IF(d.field = " . intval($field->id ). ", " . $type->datafield . ", NULL)) AS `" . $field->name . "`";
         }
-        $sql .= "\r\nFROM clout_record r \r\n";
-        $sql .= "LEFT JOIN clout_data d ON d.record = r.id\r\n";
-        $sql .= "WHERE r.section = " . $section->id;
-        dd($sql);
+        $this->sql .= "\r\nFROM clout_record r \r\n";
+        $this->sql .= "LEFT JOIN clout_data d ON d.record = r.id\r\n";
+        $this->sql .= "WHERE r.section = " . intval($section->id);
+
+        return $this;
     }
 
 }
-
-// SELECT
-//  *,
-//  GROUP_CONCAT(IF(d.field = 3,string_data,NULL)) AS a,
-//  GROUP_CONCAT(IF(d.field = 4,date_data,NULL)) AS b
-// FROM
-//  clout_record r
-// LEFT JOIN clout_data d ON d.record = r.id

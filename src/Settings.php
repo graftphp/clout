@@ -15,6 +15,9 @@ class Settings
         $this->routes[] = ['/clout/login', $this->namespace . '\SessionController', 'create'];
         $this->routes[] = ['/clout/logout', $this->namespace . '\SessionController', 'delete'];
         $this->routes[] = ['/clout/home', $this->namespace . '\CloutController', 'dashboard'];
+        $this->routes[] = ['/clout/sections/{}/{}/delete', $this->namespace . '\RecordController', 'delete'];
+        $this->routes[] = ['/clout/sections/{}/{}/edit', $this->namespace . '\RecordController', 'edit'];
+        $this->routes[] = ['/clout/sections/{}/{}/update', $this->namespace . '\RecordController', 'update'];
         $this->routes[] = ['/clout/sections/{}/create', $this->namespace . '\RecordController', 'create'];
         $this->routes[] = ['/clout/sections/{}/store', $this->namespace . '\RecordController', 'store'];
         $this->routes[] = ['/clout/sections/{}', $this->namespace . '\RecordController', 'show'];
