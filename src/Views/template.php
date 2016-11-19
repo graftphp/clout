@@ -39,19 +39,19 @@
                     </li>
 
                     <?php if($sections) : ?>
-                        <?php foreach($sections as $s) : ?>
+                        <?php foreach($sections as $section) : ?>
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <?= $s->name ?>
+                                <?= $section->name ?>
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/clout/sections/<?= $s->slug ?>">
+                                    <a href="/clout/sections/<?= $section->slug ?>">
                                         <span class="glyphicon glyphicon-th-list"></span>
                                         View
                                     </a>
-                                    <a href="/clout/sections/<?= $s->slug ?>/create">
+                                    <a href="/clout/sections/<?= $section->slug ?>/create">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         Add Record
                                     </a>

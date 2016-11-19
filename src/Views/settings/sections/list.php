@@ -21,17 +21,17 @@
             </thead>
             <tbody>
                 <?php if($sections) : ?>
-                    <?php foreach($sections as $s) : ?>
+                    <?php foreach($sections as $section) : ?>
                     <tr>
-                        <td><?= $s->id ?></td>
-                        <td><?= $s->name ?></td>
+                        <td><?= $section->id ?></td>
+                        <td><?= $section->name ?></td>
                         <td>-</td>
                         <td width="50">
-                            <a href="/clout/settings/sections/<?= $s->slug ?>">
+                            <a href="/clout/settings/sections/<?= $section->slug ?>">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
 
-                            <a href="/clout/settings/sections/delete?<?= $s->id ?>"
+                            <a href="/clout/settings/sections/delete?<?= $section->id ?>"
                             onclick="return confirm('Delete this section?');">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a>

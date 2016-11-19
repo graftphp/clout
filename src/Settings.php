@@ -4,8 +4,7 @@ namespace GraftPHP\Clout;
 
 class Settings
 {
-
-    private $namespace = 'GraftPHP\Clout\Controllers';
+    private $namespace = __NAMESPACE__ . '\Controllers';
 
     public $routes = [];
 

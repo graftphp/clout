@@ -11,6 +11,7 @@ class Data extends Model
     public static $db_idcolumn = 'id';
 
     public static $db_columns = [
+    	['record', 'int'],
         ['field', 'int'],
         ['string_data', 'varchar(255)'],
         ['number_data', 'int'],
