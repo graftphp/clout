@@ -31,6 +31,23 @@ class CloutController
         $this->data['sections'] = Section::all();
     }
 
+    public function asset($file)
+    {
+        $path = Settings::assetFolder() . $file;
+        $info = pathinfo($path);
+        header_remove();
+        switch($info['extension']) {
+            case 'css':
+                header('Content-Type: text/css');
+            break;
+            default: 
+                header('Content-type: ' . mime_content_type($path));
+            break;
+        }
+        readfile($path);
+        die();
+    }
+
     public function dashboard()
     {
         View::Render('home', $this->data, Settings::viewFolder());
@@ -39,7 +56,7 @@ class CloutController
     public function login()
     {
         if (isset($_SESSION['userid'])) {
-            Functions::redirect('/clout/home');
+            Functions::redirect(Settings::cloutURL() . '/home');
         }
 
         View::Render('login', $this->data, Settings::viewFolder());

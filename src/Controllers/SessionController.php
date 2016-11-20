@@ -2,6 +2,7 @@
 
 namespace GraftPHP\Clout\Controllers;
 
+use GraftPHP\Clout\Settings;
 use GraftPHP\Clout\User;
 use GraftPHP\Framework\Functions;
 use GraftPHP\Framework\View;
@@ -20,14 +21,14 @@ class SessionController
             }
         }
 
-        Functions::redirect('/clout');
+        Functions::redirect(Settings::cloutURL());
     }
 
     public function delete()
     {
         session_destroy();
 
-        Functions::redirect('/clout');
+        Functions::redirect(Settings::cloutURL());
     }
 
 }

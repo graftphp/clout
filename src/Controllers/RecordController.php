@@ -33,7 +33,7 @@ class RecordController extends CloutController
 
         $record->delete();
 
-        Functions::redirect('/clout/sections/' . $section);
+        Functions::redirect(Settings::cloutURL() . '/sections/' . $section);
     }
 
     public function edit($section, $record_id)
@@ -60,7 +60,7 @@ class RecordController extends CloutController
 
         $this->store_data($section, $record);
 
-        Functions::redirect('/clout/sections/' . $section->slug);
+        Functions::redirect(Settings::cloutURL() . '/sections/' . $section->slug);
     }
 
     public function show($section)
@@ -82,7 +82,7 @@ class RecordController extends CloutController
 
         $this->store_data($section, $record);
 
-        Functions::redirect('/clout/sections/' . $section->slug);
+        Functions::redirect(Settings::cloutURL() . '/sections/' . $section->slug);
     }
 
     private function store_data($section, $record)

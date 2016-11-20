@@ -2,7 +2,7 @@
 
 {body}
 
-    <a href="/clout/settings/sections/create" class="btn btn-primary pull-right">
+    <a href="create" class="btn btn-primary pull-right">
         Add Section
         <span class="glyphicon glyphicon-plus"></span>
     </a>
@@ -27,11 +27,11 @@
                         <td><?= $section->name ?></td>
                         <td>-</td>
                         <td width="50">
-                            <a href="/clout/settings/sections/<?= $section->slug ?>">
+                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/edit">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </a>
 
-                            <a href="/clout/settings/sections/delete?<?= $section->id ?>"
+                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/delete"
                             onclick="return confirm('Delete this section?');">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a>

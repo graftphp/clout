@@ -30,7 +30,7 @@ class SectionController extends CloutController
         }
         $section->delete();
 
-        Functions::redirect('/clout/settings/sections');
+        Functions::redirect(Settings::cloutURL() . '/settings/sections');
     }
 
     public function index()
@@ -45,7 +45,7 @@ class SectionController extends CloutController
         $section->slug = Functions::URLSafe($_POST['name']);
         $section->save();
 
-        Functions::redirect('/clout/settings/sections/' . $section->slug);
+        Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->slug);
     }
 
     public function show($slug = null)
@@ -91,7 +91,7 @@ class SectionController extends CloutController
             }
         }
 
-        Functions::redirect('/clout/settings/sections/' . $section->slug);
+        Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->slug);
     }
 
 }

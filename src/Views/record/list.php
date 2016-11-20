@@ -2,7 +2,7 @@
 
 {body}
 
-    <a href="/clout/sections/<?= $section->slug ?>/create" class="btn btn-primary pull-right">
+    <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/create" class="btn btn-primary pull-right">
         Add <?= $section->name ?>
         <span class="glyphicon glyphicon-plus"></span>
     </a>
@@ -29,11 +29,11 @@
                     <td><?= $record->{$field->name} ?></td>
                     <?php endforeach; ?>
                     <td width="50">
-                        <a href="/clout/sections/<?= $section->slug ?>/<?= $record->id ?>/edit">
+                        <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/edit">
                             <span class="glyphicon glyphicon-edit"></span>
                         </a>
 
-                        <a href="/clout/sections/<?= $section->slug ?>/<?= $record->id ?>/delete"
+                        <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/delete"
                         onclick="return confirm('Delete this section?');">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>

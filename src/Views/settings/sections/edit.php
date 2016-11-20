@@ -4,7 +4,7 @@
 
     <h1>Update a Section</h1>
 
-    <form method="post" action="/clout/settings/sections/update?<?= $section->id ?>">
+    <form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/update">
         <div class="form-group">
             <label for="name">Section Name</label>
             <input type="text" name="name" class="form-control" required

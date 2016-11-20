@@ -1,112 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="uk-height-1-1">
 <head>
     {head}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clout Dashboard</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/_/style.css" rel="stylesheet">
     {css}
 </head>
-<body>
+<body class="uk-height-1-1">
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+    <div class="uk-grid">
 
-            <div class="navbar-header">
-                <button
-                    type="button"
-                    class="navbar-toggle collapsed"
-                    data-toggle="collapse"
-                    data-target="#master-navbar"
-                    aria-expanded="false"
-                >
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/clout/home">Clout</a>
-            </div>
+        <div class="uk-width-1-10"
+            style="background-color: #ddd">
 
-            <div class="collapse navbar-collapse" id="master-navbar">
-                <ul class="nav navbar-nav">
+            <h1>Clout</h1>
+
+            <h4>Content</h4>
+            <ul>
+                <?php if($sections) : ?>
+                    <?php foreach($sections as $section) : ?>
                     <li>
-                        <a href="/clout/home">
-                            <span class="glyphicon glyphicon-home"></span>
+                        <a href="#">
+                            <?= $section->name ?>
+                            <span class="caret"></span>
                         </a>
-                    </li>
-
-                    <?php if($sections) : ?>
-                        <?php foreach($sections as $section) : ?>
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <?= $section->name ?>
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="/clout/sections/<?= $section->slug ?>">
-                                        <span class="glyphicon glyphicon-th-list"></span>
-                                        View
-                                    </a>
-                                    <a href="/clout/sections/<?= $section->slug ?>/create">
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                        Add Record
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <?php endforeach ?>
-                    <?php endif; ?>
-
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="glyphicon glyphicon-cog"></span></a>
-                        <ul class="dropdown-menu">
+                        <ul>
                             <li>
-                                <a href="/clout/settings/sections">
-                                    <span class="glyphicon glyphicon-cog"></span>
-                                    Section Setup
+                                <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>">
+                                    View
                                 </a>
-                                <a href="/clout/sections/products/add">
-                                    <span class="glyphicon glyphicon-cog"></span>
-                                    System Settings
-                                </a>
-                                <a href="https://github.com/graftphp/clout/wiki">
-                                    <span class="glyphicon glyphicon-globe"></span>
-                                    Get help
-                                </a>
-                                <a href="https://github.com/graftphp/clout/issues" target="_blank">
-                                    <span class="glyphicon glyphicon-globe"></span>
-                                    Report a problem
+                            </li>
+                            <li>                                
+                                <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/create">
+                                    Add Record
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="/clout/logout">
-                        <span class="glyphicon glyphicon-log-out"></span>
-                    </a></li>
-                </ul>
-            </div>
+                    <?php endforeach ?>
+                <?php endif; ?>
+            </ul>
+
+            <h4>System</h4>
+            <ul>
+                <li>
+                    <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections">
+                        Section Setup
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/products/add">
+                        System Settings
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/graftphp/clout/wiki">
+                        Get help
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/graftphp/clout/issues" target="_blank">
+                        Report a problem
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/logout">
+                        Log out
+                    </a>
+                </li>
+            </ul>
 
         </div>
-    </nav>
-
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-
-    <div class="col-sm-12">
-
-        {body}
+        <div class="uk-width-9-10">
+            {body}        
+        </div>
 
     </div>
 
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="<?= \GraftPHP\Clout\Settings::cloutURL()?>/_/script.js"></script>
     {script}
 </body>
 </html>

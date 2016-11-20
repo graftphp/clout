@@ -1,0 +1,6 @@
+{
+  "name": "clout",
+  "dependencies": {
+    "uikit": "2.*"
+  }
+}

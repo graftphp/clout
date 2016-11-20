@@ -4,7 +4,7 @@
 
     <h1>Create a Section</h1>
 
-    <form method="post" action="/clout/settings/sections/store">
+    <form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/store">
         <div class="form-group">
             <label for="name">Section Name</label>
             <input type="text" name="name" class="form-control" required>
