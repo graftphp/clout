@@ -2,15 +2,15 @@
 
 {body}
 
-    <a href="create" class="btn btn-primary pull-right">
+    <a href="create" class="uk-button uk-button-primary uk-float-right">
         Add Section
         <span class="glyphicon glyphicon-plus"></span>
     </a>
 
     <h1>Sections</h1>
 
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
+    <div class="uk-overflow-container">
+        <table class="uk-table uk-table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -28,12 +28,12 @@
                         <td>-</td>
                         <td width="50">
                             <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/edit">
-                                <span class="glyphicon glyphicon-edit"></span>
+                                <i class="uk-icon-edit"></i>
                             </a>
 
                             <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/delete"
                             onclick="return confirm('Delete this section?');">
-                                <span class="glyphicon glyphicon-trash"></span>
+                                <i class="uk-icon-trash"></i>
                             </a>
                         </td>
                     </tr>

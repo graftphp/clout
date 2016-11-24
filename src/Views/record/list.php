@@ -10,8 +10,8 @@
     <h1><?= $section->name ?></h1>
 
     <?php if($records->count() > 0) : ?>
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
+    <div class="uk-overflow-container">
+        <table class="uk-table uk-table-hover">
             <thead>
                 <tr>
                     <th>ID</th>

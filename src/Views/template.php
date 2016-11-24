@@ -11,9 +11,9 @@
 </head>
 <body class="uk-height-1-1">
 
-    <div class="uk-grid">
+    <div class="uk-grid uk-height-1-1">
 
-        <div class="uk-width-1-10"
+        <div class="uk-width-1-5 uk-height-1-1"
             style="background-color: #ddd">
 
             <h1>Clout</h1>
@@ -33,7 +33,7 @@
                                     View
                                 </a>
                             </li>
-                            <li>                                
+                            <li>
                                 <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/create">
                                     Add Record
                                 </a>
@@ -74,8 +74,8 @@
             </ul>
 
         </div>
-        <div class="uk-width-9-10">
-            {body}        
+        <div class="uk-width-4-5">
+            {body}
         </div>
 
     </div>
