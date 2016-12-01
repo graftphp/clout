@@ -2,7 +2,8 @@
 
 {body}
 
-    <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/create" class="btn btn-primary pull-right">
+    <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/sections/<?= $section->slug ?>/create"
+        class="btn btn-primary pull-right">
         Add <?= $section->name ?>
         <span class="glyphicon glyphicon-plus"></span>
     </a>

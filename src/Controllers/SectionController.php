@@ -35,11 +35,15 @@ class SectionController extends CloutController
 
     public function index()
     {
-        View::Render('settings.sections.list', $this->data,Settings::viewFolder());
+        View::Render('settings.sections.list', $this->data, Settings::viewFolder());
     }
 
     public function store()
     {
+        if (Section::find($_POST['name'], 'name')) {
+            dd('Section already exists: ' . htmlentities($_POST['name']));
+        }
+
         $section = new Section();
         $section->name = $_POST['name'];
         $section->slug = Functions::URLSafe($_POST['name']);

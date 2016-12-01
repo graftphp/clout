@@ -25,7 +25,6 @@ class Settings
         $this->routes[] = [static::cloutURL() . '/settings/sections', $this->namespace . '\SectionController', 'index'];
         $this->routes[] = [static::cloutURL() . '/settings/sections/create', $this->namespace . '\SectionController', 'create'];
         $this->routes[] = [static::cloutURL() . '/settings/sections/delete', $this->namespace . '\SectionController', 'delete'];
-        $this->routes[] = [static::cloutURL() . '/settings/sections/edit', $this->namespace . '\SectionController', 'edit'];
         $this->routes[] = [static::cloutURL() . '/settings/sections/store', $this->namespace . '\SectionController', 'store'];
         $this->routes[] = [static::cloutURL() . '/settings/sections/update', $this->namespace . '\SectionController', 'update'];
         $this->routes[] = [static::cloutURL() . '/settings/sections/{}', $this->namespace . '\SectionController', 'show'];
