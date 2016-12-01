@@ -2,89 +2,88 @@
 
 {body}
 
-    <form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/update"
-        class="uk-form uk-form-stacked">
-        <fieldset>
-            <legend>Update the <?= $section->name ?> Section</legend>
-            <div class="uk-form-row">
-                <label class="uk-form-label" for="name">Section Name</label>
-                <input type="text" name="name" class="form-control" required
-                    value="<?=$section->name;?>">
-            </div>
-        </fieldset>
+<form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>/update"
+    class="uk-form uk-form-stacked">
+    <fieldset>
+        <legend>Update the <?= $section->name ?> Section</legend>
+        <div class="uk-form-row">
+            <label class="uk-form-label" for="name">Section Name</label>
+            <input type="text" name="name" class="uk-width-1-1" required
+                value="<?=$section->name;?>">
+        </div>
+    </fieldset>
 
-        <h4>Fields</h4>
-
-        <table class="uk-table uk-table-striped">
-            <tbody class="fields">
-            </tbody>
-        </table>
-
-        <button id="add-field" type="button" class="uk-button uk-button-primary">
+    <h4>
+        <button id="add-field" type="button" class="uk-button uk-button-primary uk-float-right">
             Add Field <i class="uk-icon-plus"></i>
         </button>
+        Fields
+    </h4>
 
-        <div class="form-group fields">
-
-
-            <tr id="field-template" class="field" style="display:none;">
-                <input type="hidden" name="field-id[]" value="">
-                <div class="form-inline">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <button id="delete-field" type="button" class="btn btn-danger pull-right">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="field-name[]" class="form-control">
-                                <label>Type</label>
-                                <select name="field-type[]" class="form-control">
-                                    <?php foreach ($fieldtypes as $ft): ?>
-                                    <option value="<?=$ft->id?>">
-                                        <?= $ft->name ?>
-                                    </option>
-                                    <?php endforeach;?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <table class="uk-table uk-table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th></th>
             </tr>
-            <?php if ($section->fields()) : ?>
-                <?php foreach($section->fields() as $f) : ?>
-                <div class="field">
-                    <input type="hidden" name="field-id[]" value="<?= $f->id ?>">
-                    <div class="form-inline">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <button id="delete-field" type="button" class="btn btn-danger pull-right">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </button>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" name="field-name[]" class="form-control" value="<?= $f->name ?>">
-                                    <label>Type</label>
-                                    <select name="field-type[]" class="form-control">
-                                        <?php foreach ($fieldtypes as $ft): ?>
-                                        <option value="<?=$ft->id ?>" <?= $f->type == $ft->id ? ' selected' : '' ?>>
-                                            <?= $ft->name ?>
-                                        </option>
-                                        <?php endforeach;?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary">Save Section</button>
-        </div>
-    </form>
+        </thead>
+        <?php if ($section->fields()) : ?>
+        <tbody class="fields">
 
+            <?php foreach($section->fields() as $f) : ?>
+            <tr class="field">
+                <input type="hidden" name="field-id[]" value="<?= $f->id ?>">
+                <td>
+                    <input type="text" name="field-name[]" class="uk-width-1-1" value="<?= $f->name ?>">
+                </td>
+                <td>
+                    <select name="field-type[]" class="uk-width-1-1">
+                        <?php foreach ($fieldtypes as $ft): ?>
+                        <option value="<?=$ft->id ?>" <?= $f->type == $ft->id ? ' selected' : '' ?>>
+                            <?= $ft->name ?>
+                        </option>
+                        <?php endforeach;?>
+                    </select>
+                </td>
+                <td>
+                    <button id="delete-field" type="button" class="uk-button uk-button-danger">
+                        <i class="uk-icon-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+
+        </tbody>
+        <?php endif; ?>
+    </table>
+
+    <button type="submit" class="uk-button uk-button-success">Save Section</button>
+
+</form>
+
+<table style="display: none;">
+    <tr id="field-template" class="field">
+        <input type="hidden" name="field-id[]" value="">
+        <td>
+            <input type="text" name="field-name[]" class="uk-width-1-1">
+        </td>
+        <td>
+            <select name="field-type[]" class="uk-width-1-1">
+                <?php foreach ($fieldtypes as $ft): ?>
+                <option value="<?=$ft->id?>">
+                    <?= $ft->name ?>
+                </option>
+                <?php endforeach;?>
+            </select>
+        </td>
+        <td>
+            <button id="delete-field" type="button" class="uk-button uk-button-danger">
+                <i class="uk-icon-trash"></i>
+            </button>
+        </td>
+    </tr>
+</table>
 {/body}
 
 {script}

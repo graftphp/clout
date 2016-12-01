@@ -52,10 +52,10 @@ class SectionController extends CloutController
         Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->slug);
     }
 
-    public function show($slug = null)
+    public function show($section_id)
     {
         //show single
-        $this->data['section'] = Section::find($slug, 'slug');
+        $this->data['section'] = Section::find($section_id, 'id');
 
         $ft = new FieldType();
         $this->data['fieldtypes'] = $ft->all();
@@ -63,9 +63,9 @@ class SectionController extends CloutController
         View::Render('settings.sections.edit', $this->data, Settings::viewFolder());
     }
 
-    public function update()
+    public function update($section_id)
     {
-        $section = Section::find($_SERVER['QUERY_STRING'], 'id');
+        $section = Section::find($section_id, 'id');
         $section->name = $_POST['name'];
         $section->slug = Functions::URLSafe($_POST['name']);
         $section->save();

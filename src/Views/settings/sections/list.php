@@ -27,7 +27,7 @@
                         <td><?= $section->name ?></td>
                         <td>-</td>
                         <td width="50">
-                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->slug ?>/edit">
+                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>">
                                 <i class="uk-icon-edit"></i>
                             </a>
 
