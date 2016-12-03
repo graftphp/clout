@@ -2,12 +2,13 @@
 
 {body}
 
-    <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/sections/create" class="uk-button uk-button-primary uk-float-right">
-        Add Section
-        <span class="glyphicon glyphicon-plus"></span>
-    </a>
-
-    <h1>Sections</h1>
+    <h1>
+        <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/sections/create" class="uk-button uk-button-primary uk-float-right">
+            Add Section
+            <i class="uk-icon-plus"></i>
+        </a>
+        Sections
+    </h1>
 
     <div class="uk-overflow-container">
         <table class="uk-table uk-table-striped uk-table-hover">

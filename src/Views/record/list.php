@@ -2,17 +2,18 @@
 
 {body}
 
-    <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/sections/<?= $section->slug ?>/create"
-        class="btn btn-primary pull-right">
-        Add <?= $section->name ?>
-        <span class="glyphicon glyphicon-plus"></span>
-    </a>
 
-    <h1><?= $section->name ?></h1>
+    <h1>
+        <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/sections/<?= $section->slug ?>/create" class="uk-button uk-button-primary uk-float-right">
+            Add <?= $section->name ?>
+            <i class="uk-icon-plus"></i>
+        </a>
+        <?= $section->name ?>
+    </h1>
 
     <?php if($records->count() > 0) : ?>
     <div class="uk-overflow-container">
-        <table class="uk-table uk-table-hover">
+        <table class="uk-table uk-table-striped uk-table-hover">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -31,12 +32,12 @@
                     <?php endforeach; ?>
                     <td width="50">
                         <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/edit">
-                            <span class="glyphicon glyphicon-edit"></span>
+                            <i class="uk-icon-edit"></i>
                         </a>
 
                         <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/delete"
                         onclick="return confirm('Delete this section?');">
-                            <span class="glyphicon glyphicon-trash"></span>
+                            <i class="uk-icon-trash"></i>
                         </a>
                     </td>
                 </tr>

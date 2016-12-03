@@ -73,9 +73,11 @@ class SectionController extends CloutController
         // delete fields not in the POST data
         foreach($section->fields() as $field) {
             $del = true;
-            for($f = 1; $f < count($_POST['field-id']); $f++) {
-                if (intval($field->id) == intval($_POST['field-id'][$f])) {
-                    $del = false;
+            if (isset($_POST['field-id'])) {
+                for($f = 1; $f < count($_POST['field-id']); $f++) {
+                    if (intval($field->id) == intval($_POST['field-id'][$f])) {
+                        $del = false;
+                    }
                 }
             }
             if ($del) {
@@ -85,7 +87,7 @@ class SectionController extends CloutController
 
         // add/update fields in the POST data
         if (count($_POST['field-name']) > 1) {
-            for($f = 1; $f < count($_POST['field-id']); $f++) {
+            for($f = 0; $f < count($_POST['field-id']); $f++) {
                 $o = new Field();
                 $o->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);
                 $o->section = $section->id;
@@ -95,7 +97,7 @@ class SectionController extends CloutController
             }
         }
 
-        Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->slug);
+        Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->id);
     }
 
 }
