@@ -2,6 +2,7 @@ js_files = {
     '../src/Assets/script.js': [
         'bower_components/jquery/dist/jquery.js',
         'bower_components/uikit/js/uikit.js',
+        'bower_components/uikit/js/components/sortable.js',
         './js/**/*.js'
     ]
 };

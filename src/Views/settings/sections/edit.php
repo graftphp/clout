@@ -24,20 +24,24 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Type</th>
-                <th></th>
+                <th width="200">Type</th>
+                <th width="30"></th>
+                <th width="30"></th>
             </tr>
         </thead>
+    </table>
         <?php if ($section->fields()) : ?>
-        <tbody class="fields">
 
+<div id="fields-sortable" class="uk-sortable" data-uk-sortable="{handleClass:'uk-sortable-handle', dragCustomClass:'uk-hidden'}">
             <?php foreach($section->fields() as $f) : ?>
-            <tr class="field">
+    <table class="uk-table">
+        <tbody class="fields">
+            <tr class="field uk-form">
                 <input type="hidden" name="field-id[]" value="<?= $f->id ?>">
                 <td>
                     <input type="text" name="field-name[]" class="uk-width-1-1" value="<?= $f->name ?>">
                 </td>
-                <td>
+                <td width="200">
                     <select name="field-type[]" class="uk-width-1-1">
                         <?php foreach ($fieldtypes as $ft): ?>
                         <option value="<?=$ft->id ?>" <?= $f->type == $ft->id ? ' selected' : '' ?>>
@@ -46,17 +50,22 @@
                         <?php endforeach;?>
                     </select>
                 </td>
-                <td>
+                <td width="30">
                     <button id="delete-field" type="button" class="uk-button uk-button-danger">
                         <i class="uk-icon-trash"></i>
                     </button>
                 </td>
+                <td width="30">
+                    <div class="uk-sortable-handle">
+                        <i class="uk-text-muted uk-icon-bars uk-icon-medium"></i>
+                    </div>
+                </td>
             </tr>
-            <?php endforeach; ?>
-
         </tbody>
-        <?php endif; ?>
     </table>
+            <?php endforeach; ?>
+</div>
+        <?php endif; ?>
 
     <button type="submit" class="uk-button uk-button-success">Save Section</button>
 
@@ -82,6 +91,11 @@
                 <i class="uk-icon-trash"></i>
             </button>
         </td>
+        <td>
+            <div class="uk-sortable-handle">
+                <i class="uk-text-muted uk-icon-bars uk-icon-medium"></i>
+            </div>
+        </td>
     </tr>
 </table>
 {/body}
@@ -98,6 +112,12 @@
 
         $('body').on('click', '#delete-field', function() {
             $(this).closest('.field').remove();
+        });
+
+        var sortable;
+
+        $(document).ready(function(){
+            sortable = UIKit.sortable($('#fields-sortable'));
         });
     </script>
 {/script}
