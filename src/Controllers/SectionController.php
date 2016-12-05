@@ -88,12 +88,13 @@ class SectionController extends CloutController
         // add/update fields in the POST data
         if (count($_POST['field-name']) > 1) {
             for($f = 0; $f < count($_POST['field-id']); $f++) {
-                $o = new Field();
-                $o->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);
-                $o->section = $section->id;
-                $o->name = $_POST['field-name'][$f];
-                $o->type = $_POST['field-type'][$f];
-                $o->save();
+                $field = new Field();
+                $field->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);
+                $field->section = $section->id;
+                $field->name = $_POST['field-name'][$f];
+                $field->type = $_POST['field-type'][$f];
+                $field->order = $_POST['field-order'][$f];
+                $field->save();
             }
         }
 

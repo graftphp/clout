@@ -14,6 +14,7 @@ class Field extends Model
         ['section', 'int'],
         ['type', 'int'],
         ['name', 'varchar(255)'],
+        ['order', 'int'],
     ];
 
     public function type()

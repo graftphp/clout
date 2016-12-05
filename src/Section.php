@@ -19,7 +19,9 @@ class Section extends Model
 
     public function Fields()
     {
-        return Field::where('section', '=', $this->id)->get();
+        return Field::where('section', '=', $this->id)
+            ->orderBy('order', 'asc')
+            ->get();
     }
 
 }
