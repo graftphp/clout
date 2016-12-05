@@ -18,9 +18,37 @@ class FieldType extends Model
     ];
 
     static public $db_defaultdata = [
-        ['1', 'String', 'varchar(255)', 'string_data', 'Text, up to 255 characters'],
-        ['2', 'Number', 'int', 'number_data', 'Whole number, -2147483648 to 2147483647'],
+        ['1', 'Short Text', 'varchar(255)', 'string_data', 'Text, up to 255 characters'],
+        ['4', 'Long Text (plain)', 'text', 'text_data', ''],
+        ['5', 'Long Text (formatted)', 'text', 'text_data', ''],
+        ['2', 'Whole Number', 'int', 'number_data', 'Whole number, -2147483648 to 2147483647'],
         ['3', 'Date', 'date', 'date_data', 'Date'],
     ];
+
+    static private $fieldtype_templates = [
+        1 => '
+        <input type="text" name="{name}" value="{value}" class="uk-width-1-1">
+        ',
+        2 => '
+        <input type="number" step="1" name="{name}" value="{value}">
+        ',
+        3 => '
+        <input type="text" name="{name}" value="{value}" data-uk-datepicker="{format:\'YYYY-MM-DD\'}">
+        ',
+        4 => '
+        <textarea name="{name}" class="uk-width-1-1">{value}</textarea>
+        ',
+        5 => '
+        <textarea name="{name}" class="uk-width-1-1">{value}</textarea>
+        ',
+    ];
+
+    public static function render($field_id, $name, $value = '')
+    {
+        $out = self::$fieldtype_templates[$field_id];
+        $out = str_replace('{name}', $name, $out);
+        $out = str_replace('{value}', $value, $out);
+        return $out;
+    }
 
 }

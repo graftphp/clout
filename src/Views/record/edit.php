@@ -9,7 +9,7 @@
         <?php foreach ($section->fields() as $field) : ?>
             <div class="uk-form-row">
                 <label  class="uk-form-label for="f<?= $field->id ?>"><?= $field->name ?></label>
-                <input type="text" name="f<?= $field->id ?>" value="<?= $record->{$field->name} ?>">
+                <?= \GraftPHP\Clout\Fieldtype::render($field->type, 'f' . $field->id, $record->{$field->name}) ?>
             </div>
         <?php endforeach; ?>
         <div class="uk-form-row">

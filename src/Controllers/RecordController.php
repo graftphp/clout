@@ -3,6 +3,7 @@
 namespace GraftPHP\Clout\Controllers;
 
 use GraftPHP\Clout\Data;
+use GraftPHP\Clout\FieldType;
 use GraftPHP\Clout\Record;
 use GraftPHP\Clout\Section;
 use GraftPHP\Clout\Settings;
@@ -16,7 +17,6 @@ class RecordController extends CloutController
     public function create($section)
     {
         $this->data['section'] = Section::find($section, 'slug');
-
         View::Render('record.create', $this->data, Settings::viewFolder());
     }
 

@@ -16,6 +16,7 @@ class Data extends Model
         ['string_data', 'varchar(255)'],
         ['number_data', 'int'],
         ['date_data', 'date'],
+        ['text_data', 'text'],
     ];
 
 }

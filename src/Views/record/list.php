@@ -28,7 +28,7 @@
                 <tr>
                     <td><?= $record->id ?></td>
                     <?php foreach ($section->fields() as $field) : ?>
-                    <td><?= $record->{$field->name} ?></td>
+                    <td><?= htmlentities( $record->{$field->name} ) ?></td>
                     <?php endforeach; ?>
                     <td width="50">
                         <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/edit">
