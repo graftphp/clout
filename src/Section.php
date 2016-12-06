@@ -17,9 +17,17 @@ class Section extends Model
         ['slug', 'varchar(255)'],
     ];
 
-    public function Fields()
+    public function fields()
     {
         return Field::where('section', '=', $this->id)
+            ->orderBy('order', 'asc')
+            ->get();
+    }
+
+    public function listFields()
+    {
+        return Field::where('section', '=', $this->id)
+            ->where('list', '=', '1')
             ->orderBy('order', 'asc')
             ->get();
     }

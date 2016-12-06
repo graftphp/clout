@@ -32,7 +32,7 @@
                                 <i class="uk-icon-edit"></i>
                             </a>
 
-                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->slug ?>/delete"
+                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>/delete"
                             onclick="return confirm('Delete this section?');">
                                 <i class="uk-icon-trash"></i>
                             </a>

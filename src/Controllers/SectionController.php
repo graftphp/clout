@@ -22,9 +22,9 @@ class SectionController extends CloutController
         View::Render('settings.sections.create', $this->data, Settings::viewFolder());
     }
 
-    public function delete()
+    public function delete($section_id)
     {
-        $section = Section::find($_SERVER['QUERY_STRING']);
+        $section = Section::find($section_id);
         foreach($section->fields() as $field) {
             $field->delete();
         }
@@ -49,7 +49,7 @@ class SectionController extends CloutController
         $section->slug = Functions::URLSafe($_POST['name']);
         $section->save();
 
-        Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->slug);
+        Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->id);
     }
 
     public function show($section_id)
@@ -94,6 +94,7 @@ class SectionController extends CloutController
                 $field->name = $_POST['field-name'][$f];
                 $field->type = $_POST['field-type'][$f];
                 $field->order = $_POST['field-order'][$f];
+                $field->list = $_POST['field-list'][$f];
                 $field->save();
             }
         }

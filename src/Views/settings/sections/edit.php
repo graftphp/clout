@@ -25,6 +25,7 @@
             <tr>
                 <th>Name</th>
                 <th width="200">Type</th>
+                <th width="75">List?</th>
                 <th width="30"></th>
                 <th width="30"></th>
             </tr>
@@ -49,6 +50,12 @@
                                         <?= $fieldtype->name ?>
                                     </option>
                                     <?php endforeach;?>
+                                </select>
+                            </td>
+                            <td width="75">
+                                <select name="field-list[]">
+                                    <option value="1" <?= $field->list ? 'selected' : '' ?>>Yes</option>
+                                    <option value="0" <?= !$field->list ? 'selected' : '' ?>>No</option>
                                 </select>
                             </td>
                             <td width="30">
@@ -88,6 +95,12 @@
                 <?php endforeach;?>
             </select>
         </td>
+        <td width="75">
+            <select name="field-list[]">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </td>        
         <td width="30">
             <button id="delete-field" type="button" class="uk-button uk-button-danger">
                 <i class="uk-icon-trash"></i>
@@ -124,7 +137,6 @@
 
         function setOrderBy()
         {
-            console.log('orderby');
             var order = 1;
             $('input.field-order').each(function(){
                 $(this).val(order);

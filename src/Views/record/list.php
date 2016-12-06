@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <?php foreach ($section->fields() as $field) : ?>
+                    <?php foreach ($section->listFields() as $field) : ?>
                     <th><?= $field->name ?></th>
                     <?php endforeach; ?>
                     <th></th>
@@ -27,7 +27,7 @@
                 <?php foreach($records as $record) : ?>
                 <tr>
                     <td><?= $record->id ?></td>
-                    <?php foreach ($section->fields() as $field) : ?>
+                    <?php foreach ($section->listFields() as $field) : ?>
                     <td><?= htmlentities( $record->{$field->name} ) ?></td>
                     <?php endforeach; ?>
                     <td width="50">
