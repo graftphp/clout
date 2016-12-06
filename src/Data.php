@@ -17,6 +17,7 @@ class Data extends Model
         ['number_data', 'int'],
         ['date_data', 'date'],
         ['text_data', 'text'],
+        ['boolean_data', 'boolean'],
     ];
 
 }

@@ -20,11 +20,6 @@
             </a>
         </li>
         <li>
-            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/products/add">
-                System Settings
-            </a>
-        </li>
-        <li>
             <a href="https://github.com/graftphp/clout/wiki" target="_blank">
                 Get help
             </a>
