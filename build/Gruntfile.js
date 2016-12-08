@@ -3,7 +3,9 @@ js_files = {
         'bower_components/jquery/dist/jquery.js',
         'bower_components/uikit/js/uikit.js',
         'bower_components/uikit/js/components/datepicker.js',
+        'bower_components/uikit/js/components/htmleditor.js',
         'bower_components/uikit/js/components/sortable.js',
+        'bower_components/codemirror/lib/codemirror.js',
         './js/**/*.js'
     ]
 };

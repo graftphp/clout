@@ -8,7 +8,7 @@
         class="uk-form uk-form-stacked">
         <?php foreach ($section->fields() as $field) : ?>
             <div class="uk-form-row">
-                <label  class="uk-form-label for="f<?= $field->id ?>"><?= $field->name ?></label>
+                <label class="uk-form-label for="f<?= $field->id ?>"><?= $field->name ?></label>
                 <?= \GraftPHP\Clout\Fieldtype::render($field->type, 'f' . $field->id, $record->{$field->name}) ?>
             </div>
         <?php endforeach; ?>
