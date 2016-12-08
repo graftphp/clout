@@ -95,6 +95,7 @@ class SectionController extends CloutController
                 $field->type = $_POST['field-type'][$f];
                 $field->order = $_POST['field-order'][$f];
                 $field->list = $_POST['field-list'][$f];
+                $field->slug = $_POST['field-slug'][$f];
                 $field->save();
             }
         }

@@ -26,6 +26,7 @@
                 <th>Name</th>
                 <th width="200">Type</th>
                 <th width="75">List?</th>
+                <th width="30">Slug?</th>
                 <th width="30"></th>
                 <th width="30"></th>
             </tr>
@@ -57,6 +58,10 @@
                                     <option value="1" <?= $field->list ? 'selected' : '' ?>>Yes</option>
                                     <option value="0" <?= !$field->list ? 'selected' : '' ?>>No</option>
                                 </select>
+                            </td>
+                            <td width="30" class="uk-text-center">
+                                <input type="radio" name="slug" value="1" <?= $field->slug ? 'checked' : '' ?> required>
+                                <input type="hidden" name="field-slug[]" value="<?= $field->slug ? '1' : '0' ?>">
                             </td>
                             <td width="30">
                                 <button id="delete-field" type="button" class="uk-button uk-button-danger">
@@ -101,6 +106,10 @@
                 <option value="0">No</option>
             </select>
         </td>        
+        <td width="30" class="uk-text-center">
+            <input type="radio" name="slug" required>
+            <input type="hidden" name="field-slug[]" value="0">
+        </td>
         <td width="30">
             <button id="delete-field" type="button" class="uk-button uk-button-danger">
                 <i class="uk-icon-trash"></i>
@@ -129,6 +138,11 @@
         $('body').on('click', '#delete-field', function() {
             $(this).closest('.field').remove();
             setOrderBy();
+        });
+
+        $('body').on('click', "[name='slug']", function(){
+            $("[name='field-slug[]'").val(0);
+            $(this).next().val(1);
         });
 
         $("#fields-sortable").on('change.uk.sortable', function(event, sortable, dragged, action){

@@ -3,6 +3,7 @@
 namespace GraftPHP\Clout\Controllers;
 
 use GraftPHP\Clout\Data;
+use GraftPHP\Clout\Field;
 use GraftPHP\Clout\FieldType;
 use GraftPHP\Clout\Record;
 use GraftPHP\Clout\Section;
@@ -76,8 +77,20 @@ class RecordController extends CloutController
     {
         $section = Section::find($section, 'slug');
 
+        $slug = Functions::urlSafe( $_POST['f' . $section->slugfield()->id] );
+
+        $unique_slug = false;
+        while (!$unique_slug) {
+            if ($section->checkslug($slug)) {
+                $unique_slug = true;
+            } else {
+                $slug .= '-';
+            }
+        } 
+
         $record = new Record();
         $record->section = $section->id;
+        $record->slug = $slug;
         $record->save();
 
         $this->store_data($section, $record);

@@ -3,6 +3,7 @@
 namespace GraftPHP\Clout;
 
 use GraftPHP\Clout\Field;
+use GraftPHP\Clout\Record;
 use GraftPHP\Framework\DB;
 use GraftPHP\Framework\Model;
 
@@ -17,6 +18,16 @@ class Section extends Model
         ['slug', 'varchar(255)'],
     ];
 
+
+    public function checkSlug($slug)
+    {
+        $out = Record::where('section', '=', $this->id)
+            ->where('slug', '=', $slug)
+            ->get()->count();
+
+        return $out == 0 ? true : false;
+    }
+
     public function fields()
     {
         return Field::where('section', '=', $this->id)
@@ -30,6 +41,11 @@ class Section extends Model
             ->where('list', '=', '1')
             ->orderBy('order', 'asc')
             ->get();
+    }
+
+    public function slugField()
+    {
+        return Field::where('section', '=', $this->id)->get()->first();
     }
 
 }

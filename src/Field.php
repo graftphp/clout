@@ -15,6 +15,7 @@ class Field extends Model
         ['type', 'int'],
         ['name', 'varchar(255)'],
         ['list', 'boolean'],
+        ['slug', 'boolean'],
         ['order', 'int'],
     ];
 

@@ -12,6 +12,7 @@ class Record extends Model
 
     public static $db_columns = [
         ['section', 'int'],
+        ['slug', 'varchar(255)'],
     ];
 
 }
