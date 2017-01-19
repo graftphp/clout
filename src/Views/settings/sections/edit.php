@@ -13,6 +13,8 @@
         </div>
     </fieldset>
 
+    <hr />
+
     <h4>
         <button id="add-field" type="button" class="uk-button uk-button-primary uk-float-right">
             Add Field <i class="uk-icon-plus"></i>
@@ -20,7 +22,7 @@
         Fields
     </h4>
 
-    <table class="uk-table uk-table-striped">
+    <table class="uk-table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -33,8 +35,8 @@
         </thead>
     </table>
 
-    <?php if ($section->fields()) : ?>
-        <div id="fields-sortable" class="uk-sortable" data-uk-sortable="{handleClass:'uk-sortable-handle', dragCustomClass:'uk-hidden'}">
+    <div id="fields-sortable" class="uk-sortable" data-uk-sortable="{handleClass:'uk-sortable-handle', dragCustomClass:'uk-hidden'}">
+        <?php if ($section->fields()) : ?>
             <?php foreach($section->fields() as $field) : ?>
                 <table class="uk-table">
                     <tbody>
@@ -77,8 +79,32 @@
                     </tbody>
                 </table>
             <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+
+    <hr />
+
+        <h4>
+            <button id="add-relationship" type="button" class="uk-button uk-button-primary uk-float-right">
+                Add Relationship <i class="uk-icon-plus"></i>
+            </button>
+            Relationships
+        </h4>
+
+        <table class="uk-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Section</th>
+                    <th>Multiple?</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+        <div id="relationships-sortable">
         </div>
-    <?php endif; ?>
+
+    <hr />
 
     <button type="submit" class="uk-button uk-button-success">Save Section</button>
 
@@ -105,7 +131,7 @@
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
-        </td>        
+        </td>
         <td width="30" class="uk-text-center">
             <input type="radio" name="slug" required>
             <input type="hidden" name="field-slug[]" value="0">
@@ -122,16 +148,40 @@
         </td>
     </tr>
 </table>
+
+<table id="relationship-template" class="uk-table" style="display:none;">
+    <tr class="relationship">
+        <input type="hidden" name="relationship-id[]" value="">
+        <td>
+            <input type="text" name="relationship-name[]" class="relationship-id uk-width-1-1">
+        </td>
+        <td>
+            <select name="relationship-section[]">
+                <?php foreach($sections as $section) : ?>
+                    <option value="<?= $section->id ?>"><?= $section->name ?></option>
+                <?php endforeach; ?>
+            </select>
+        </td>
+        <td>
+            <select name="relationship-multiple[]">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </td>
+    </tr>
+</table>
+
 {/body}
 
 {script}
     <script>
+        // fields section
         $('#add-field').on('click', function() {
             $('#field-template')
                 .clone()
                 .appendTo('#fields-sortable')
                 .show()
-                .attr('id','');
+                .attr('id', '');
             setOrderBy();
         });
 
@@ -157,5 +207,14 @@
                 order ++;
             });
         }
+
+        // relationships section
+        $('#add-relationship').on('click', function() {
+            $('#relationship-template')
+                .clone()
+                .appendTo('#relationships-sortable')
+                .show()
+                .attr('id', '');
+        });
     </script>
 {/script}

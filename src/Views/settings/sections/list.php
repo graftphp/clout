@@ -27,13 +27,14 @@
                         <td><?= $section->id ?></td>
                         <td><?= $section->name ?></td>
                         <td>-</td>
-                        <td width="50">
-                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>">
+                        <td class="uk-text-right" nowrap>
+                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>"
+                                class="uk-button uk-button-primary">
                                 <i class="uk-icon-edit"></i>
                             </a>
 
                             <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>/delete"
-                            onclick="return confirm('Delete this section?');">
+                                class="uk-button uk-button-danger" onclick="return confirm('Delete this section?');">
                                 <i class="uk-icon-trash"></i>
                             </a>
                         </td>

@@ -25,6 +25,7 @@ class CloutController
         \GraftPHP\Clout\Field::build();
         \GraftPHP\Clout\FieldType::build();
         \GraftPHP\Clout\Record::build();
+        \GraftPHP\Clout\Relationship::build();
         \GraftPHP\Clout\Section::build();
         \GraftPHP\Clout\User::build();
 
@@ -40,7 +41,7 @@ class CloutController
             case 'css':
                 header('Content-Type: text/css');
             break;
-            default: 
+            default:
                 header('Content-type: ' . mime_content_type($path));
             break;
         }

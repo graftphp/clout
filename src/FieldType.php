@@ -56,10 +56,10 @@ class FieldType extends Model
         $out = self::$fieldtype_templates[$field_id];
         $out = str_replace('{name}', $name, $out);
         $out = str_replace('{value}', $value, $out);
-        
+
         $out = str_replace('{selected=' . $value . '}', 'selected', $out);
         $out = preg_replace("/\{selected=[\d]\}/", '', $out);
-        
+
         return $out;
     }
 

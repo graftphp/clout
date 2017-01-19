@@ -57,6 +57,8 @@ class SectionController extends CloutController
         //show single
         $this->data['section'] = Section::find($section_id, 'id');
 
+        $this->data['sections'] = Section::all();
+
         $ft = new FieldType();
         $this->data['fieldtypes'] = $ft->all();
 
