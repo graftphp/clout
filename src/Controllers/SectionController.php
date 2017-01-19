@@ -74,7 +74,7 @@ class SectionController extends CloutController
         foreach($section->fields() as $field) {
             $del = true;
             if (isset($_POST['field-id'])) {
-                for($f = 1; $f < count($_POST['field-id']); $f++) {
+                for($f = 0; $f < count($_POST['field-id']); $f++) {
                     if (intval($field->id) == intval($_POST['field-id'][$f])) {
                         $del = false;
                     }
@@ -86,7 +86,7 @@ class SectionController extends CloutController
         }
 
         // add/update fields in the POST data
-        if (count($_POST['field-name']) > 1) {
+        if (isset($_POST['field-name'])) {
             for($f = 0; $f < count($_POST['field-id']); $f++) {
                 $field = new Field();
                 $field->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);

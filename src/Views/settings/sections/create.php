@@ -8,7 +8,7 @@
         <legend>Create a Section</legend>
         <div class="uk-form-row">
             <label class="uk-form-label" for="name">Section Name</label>
-            <input type="text" name="name" class="form-control" placeholder="Blog.." required>
+            <input type="text" name="name" class="form-control" placeholder="eg. Blog.." required>
         </div>
         <div class="uk-form-row">
             <button type="submit" class="uk-button uk-button-primary">Create Section</button>
