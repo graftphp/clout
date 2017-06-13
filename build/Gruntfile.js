@@ -1,11 +1,8 @@
 js_files = {
     '../src/Assets/script.js': [
         'bower_components/jquery/dist/jquery.js',
-        'bower_components/uikit/js/uikit.js',
-        'bower_components/uikit/js/components/datepicker.js',
-        'bower_components/uikit/js/components/htmleditor.js',
-        'bower_components/uikit/js/components/sortable.js',
-        'bower_components/codemirror/lib/codemirror.js',
+        'bower_components/uikit/dist/js/uikit.js',
+        'bower_components/uikit/dist/js/uikit-icons.js',
         './js/**/*.js'
     ]
 };
@@ -38,8 +35,7 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [
-                    { expand: true, cwd: 'bower_components/uikit/fonts', src: '*',
-                        dest: '../src/Assets/fonts/' }
+                    // { expand: true, cwd: 'bower_components/uikit/fonts', src: '*', dest: '../src/Assets/fonts/' }
                 ]
             }
         },

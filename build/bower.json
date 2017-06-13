@@ -1,7 +1,7 @@
 {
-  "name": "clout",
-  "dependencies": {
-    "uikit": "2.*",
-    "codemirror": "^5.21.0"
-  }
+	"name": "clout",
+	"dependencies": {
+		"jquery": "*",
+		"uikit": "3.*"
+	}
 }
