@@ -7,7 +7,6 @@ use GraftPHP\Framework\Model;
 
 class User extends Model
 {
-
     static public $db_tablename = 'clout_user';
     static public $db_idcolumn = 'id';
 
@@ -21,5 +20,4 @@ class User extends Model
         // iloveclout
         ['1', 'webmaster', '$2y$10$hUHmNbTy2iccHE65W.swyuJd061zT2Zxsy09d7IT3/pGIe0hR6xpK', '1'],
     ];
-
 }

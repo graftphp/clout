@@ -23,5 +23,4 @@ class Field extends Model
     {
         return FieldType::where('id', '=', $this->type)->get()->first();
     }
-
 }

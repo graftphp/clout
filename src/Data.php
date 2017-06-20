@@ -6,12 +6,11 @@ use GraftPHP\Framework\Model;
 
 class Data extends Model
 {
-
     public static $db_tablename = 'clout_data';
     public static $db_idcolumn = 'id';
 
     public static $db_columns = [
-    	['record', 'int'],
+        ['record', 'int'],
         ['field', 'int'],
         ['string_data', 'varchar(255)'],
         ['number_data', 'int'],
@@ -19,5 +18,4 @@ class Data extends Model
         ['text_data', 'text'],
         ['boolean_data', 'boolean'],
     ];
-
 }

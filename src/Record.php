@@ -6,7 +6,6 @@ use GraftPHP\Framework\Model;
 
 class Record extends Model
 {
-
     public static $db_tablename = 'clout_record';
     public static $db_idcolumn = 'id';
 
@@ -14,5 +13,4 @@ class Record extends Model
         ['section', 'int'],
         ['slug', 'varchar(255)'],
     ];
-
 }

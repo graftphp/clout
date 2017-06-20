@@ -9,7 +9,6 @@ use GraftPHP\Framework\Model;
 
 class Section extends Model
 {
-
     public static $db_tablename = 'clout_section';
     public static $db_idcolumn = 'id';
 
@@ -17,7 +16,6 @@ class Section extends Model
         ['name', 'varchar(255)'],
         ['slug', 'varchar(255)'],
     ];
-
 
     public function checkSlug($slug)
     {
@@ -47,5 +45,4 @@ class Section extends Model
     {
         return Field::where('section', '=', $this->id)->get()->first();
     }
-
 }

@@ -11,7 +11,6 @@ use GraftPHP\Framework\View;
 
 class SectionController extends CloutController
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -25,7 +24,7 @@ class SectionController extends CloutController
     public function delete($section_id)
     {
         $section = Section::find($section_id);
-        foreach($section->fields() as $field) {
+        foreach ($section->fields() as $field) {
             $field->delete();
         }
         $section->delete();
@@ -73,10 +72,10 @@ class SectionController extends CloutController
         $section->save();
 
         // delete fields not in the POST data
-        foreach($section->fields() as $field) {
+        foreach ($section->fields() as $field) {
             $del = true;
             if (isset($_POST['field-id'])) {
-                for($f = 0; $f < count($_POST['field-id']); $f++) {
+                for ($f = 0; $f < count($_POST['field-id']); $f++) {
                     if (intval($field->id) == intval($_POST['field-id'][$f])) {
                         $del = false;
                     }
@@ -89,7 +88,7 @@ class SectionController extends CloutController
 
         // add/update fields in the POST data
         if (isset($_POST['field-name'])) {
-            for($f = 0; $f < count($_POST['field-id']); $f++) {
+            for ($f = 0; $f < count($_POST['field-id']); $f++) {
                 $field = new Field();
                 $field->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);
                 $field->section = $section->id;
@@ -104,5 +103,4 @@ class SectionController extends CloutController
 
         Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->id);
     }
-
 }

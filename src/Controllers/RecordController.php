@@ -14,7 +14,6 @@ use GraftPHP\Framework\View;
 
 class RecordController extends CloutController
 {
-
     public function create($section)
     {
         $this->data['section'] = Section::find($section, 'slug');
@@ -24,11 +23,11 @@ class RecordController extends CloutController
     public function delete($section, $record_id)
     {
         if (!($record = Record::find($record_id))) {
-           dd('record not found');
+            dd('record not found');
         }
 
         $data = Data::where('record', '=', $record_id)->get();
-        foreach($data as $item) {
+        foreach ($data as $item) {
             $item->delete();
         }
 
@@ -55,7 +54,7 @@ class RecordController extends CloutController
         }
 
         $data = Data::where('record', '=', $record_id)->get();
-        foreach($data as $item) {
+        foreach ($data as $item) {
             $item->delete();
         }
 
@@ -77,7 +76,7 @@ class RecordController extends CloutController
     {
         $section = Section::find($section, 'slug');
 
-        $slug = Functions::urlSafe( $_POST['f' . $section->slugfield()->id] );
+        $slug = Functions::urlSafe($_POST['f' . $section->slugfield()->id]);
 
         $unique_slug = false;
         while (!$unique_slug) {
@@ -86,7 +85,7 @@ class RecordController extends CloutController
             } else {
                 $slug .= '-';
             }
-        } 
+        }
 
         $record = new Record();
         $record->section = $section->id;
@@ -98,10 +97,10 @@ class RecordController extends CloutController
         Functions::redirect(Settings::cloutURL() . '/sections/' . $section->slug);
     }
 
-    private function store_data($section, $record)
+    private function storeData($section, $record)
     {
-        foreach ( $section->fields() as $field ) {
-            if ( isset($_POST['f' . $field->id]) ) {
+        foreach ($section->fields() as $field) {
+            if (isset($_POST['f' . $field->id])) {
                 $data = new Data();
                 $data->record = $record->id;
                 $data->field = $field->id;
@@ -110,5 +109,4 @@ class RecordController extends CloutController
             }
         }
     }
-
 }

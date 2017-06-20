@@ -6,9 +6,8 @@ use GraftPHP\Clout\Section;
 use GraftPHP\Framework\DB;
 use GraftPHP\Framework\magicCall;
 
-Class Output
+class Output
 {
-
     use MagicCall;
 
     public function all()
@@ -19,8 +18,8 @@ Class Output
         $res = $q->fetchAll(\PDO::FETCH_OBJ);
 
         $out = new \GraftPHP\Framework\Data();
-        foreach($res as $row) {
-            $out->append( $row );
+        foreach ($res as $row) {
+            $out->append($row);
         }
 
         return $out;
@@ -39,14 +38,16 @@ Class Output
         }
     }
 
-    private function section_func($slug)
+    private function sectionFunc($slug)
     {
         $section = Section::find($slug, 'slug');
 
         $this->sql = "SELECT r.id";
-        foreach ( $section->fields() as $field ) {
+        foreach ($section->fields() as $field) {
             $type = $field->type();
-            $this->sql .= ",\r\n GROUP_CONCAT(IF(d.field = " . intval($field->id ). ", " . $type->datafield . ", NULL)) AS `" . $field->name . "`";
+            $this->sql .= ",\r\n GROUP_CONCAT(
+                IF(d.field = " . intval($field->id) . ", " . $type->datafield . ", NULL)
+            ) AS `" . $field->name . "`";
         }
         $this->sql .= "\r\nFROM clout_record r \r\n";
         $this->sql .= "LEFT JOIN clout_data d ON d.record = r.id\r\n";
@@ -54,5 +55,4 @@ Class Output
 
         return $this;
     }
-
 }

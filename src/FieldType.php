@@ -6,7 +6,6 @@ use GraftPHP\Framework\Model;
 
 class FieldType extends Model
 {
-
     static public $db_tablename = 'clout_fieldtype';
     static public $db_idcolumn = 'id';
 
@@ -62,5 +61,4 @@ class FieldType extends Model
 
         return $out;
     }
-
 }

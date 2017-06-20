@@ -9,7 +9,6 @@ use GraftPHP\Framework\View;
 
 class CloutController
 {
-
     public function __construct()
     {
         if (GRAFT_CONFIG['DBHost'] == '' ||
@@ -37,13 +36,13 @@ class CloutController
         $path = Settings::assetFolder() . $file;
         $info = pathinfo($path);
         header_remove();
-        switch($info['extension']) {
+        switch ($info['extension']) {
             case 'css':
                 header('Content-Type: text/css');
-            break;
+                break;
             default:
                 header('Content-type: ' . mime_content_type($path));
-            break;
+                break;
         }
         readfile($path);
         die();
@@ -62,5 +61,4 @@ class CloutController
 
         View::Render('login', $this->data, Settings::viewFolder());
     }
-
 }
