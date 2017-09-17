@@ -92,7 +92,7 @@ class RecordController extends CloutController
         $record->slug = $slug;
         $record->save();
 
-        $this->store_data($section, $record);
+        $this->storeData($section, $record);
 
         Functions::redirect(Settings::cloutURL() . '/sections/' . $section->slug);
     }
