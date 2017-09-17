@@ -2,10 +2,9 @@
 
 {body}
 
-
     <h1>
         <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/sections/<?= $section->slug ?>/create" class="uk-button uk-button-primary uk-float-right">
-            Add <?= $section->name ?>
+            Create a <?= $section->name ?>
             <i class="uk-icon-plus"></i>
         </a>
         <?= $section->name ?>
@@ -30,14 +29,14 @@
                     <?php foreach ($section->listFields() as $field) : ?>
                     <td><?= htmlentities( $record->{$field->name} ) ?></td>
                     <?php endforeach; ?>
-                    <td width="50">
-                        <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/edit">
-                            <i class="uk-icon-edit"></i>
+                    <td width="80">
+                        <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/edit"
+                        class="uk-icon-button uk-button-primary" uk-icon="icon: pencil">
                         </a>
 
                         <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/delete"
-                        onclick="return confirm('Delete this section?');">
-                            <i class="uk-icon-trash"></i>
+                        onclick="return confirm('Delete this section?');"
+                        class="uk-icon-button uk-button-danger" uk-icon="icon: trash">
                         </a>
                     </td>
                 </tr>

@@ -4,7 +4,7 @@
 
     <h1>
         <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/sections/create" class="uk-button uk-button-primary uk-float-right">
-            Add Section
+            Create a Section
             <i class="uk-icon-plus"></i>
         </a>
         Sections
@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if($sections) : ?>
+                <?php if($sections->count() > 0) : ?>
                     <?php foreach($sections as $section) : ?>
                     <tr>
                         <td><?= $section->id ?></td>
@@ -29,17 +29,16 @@
                         <td>-</td>
                         <td class="uk-text-right" nowrap>
                             <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>"
-                                class="uk-button uk-button-primary">
-                                <i class="uk-icon-edit"></i>
+                                class="uk-icon-button uk-button-primary" uk-icon="icon: pencil">
                             </a>
 
                             <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>/delete"
-                                class="uk-button uk-button-danger" onclick="return confirm('Delete this section?');">
-                                <i class="uk-icon-trash"></i>
+                                class="uk-icon-button uk-button-danger" onclick="return confirm('Delete this section?');"
+                                uk-icon="icon: trash">
                             </a>
                         </td>
                     </tr>
-                    <?php endforeach ?>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </tbody>
         </table>

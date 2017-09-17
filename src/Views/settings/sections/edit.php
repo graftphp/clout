@@ -2,16 +2,20 @@
 
 {body}
 
+<h1>Update the <?= $section->name ?> Section</h1>
+
 <form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>/update"
-    class="uk-form uk-form-stacked">
-    <fieldset>
-        <legend>Update the <?= $section->name ?> Section</legend>
-        <div class="uk-form-row">
-            <label class="uk-form-label" for="name">Section Name</label>
-            <input type="text" name="name" class="uk-width-1-1" required
-                value="<?=$section->name;?>">
+    class="uk-form uk-form-horizontal">
+
+    <div>
+        <label class="uk-form-label" for="name">
+            Section Name
+            <small><br />(use singular form if possible)</small>
+        </label>
+        <div class="uk-form-controls">
+            <input type="text" name="name" class="uk-input" required value="<?=$section->name;?>">
         </div>
-    </fieldset>
+    </div>
 
     <hr />
 
@@ -22,7 +26,7 @@
         Fields
     </h4>
 
-    <table class="uk-table">
+    <table class="uk-table uk-margin-remove">
         <thead>
             <tr>
                 <th>Name</th>
@@ -44,10 +48,10 @@
                             <input type="hidden" name="field-id[]" value="<?= $field->id ?>">
                             <input type="hidden" name="field-order[]" class="field-order" value="<?= $field->order ?>">
                             <td>
-                                <input type="text" name="field-name[]" class="uk-width-1-1" value="<?= $field->name ?>">
+                                <input type="text" name="field-name[]" class="uk-input" value="<?= $field->name ?>">
                             </td>
                             <td width="200">
-                                <select name="field-type[]" class="uk-width-1-1">
+                                <select name="field-type[]" class="uk-select">
                                     <?php foreach ($fieldtypes as $fieldtype): ?>
                                     <option value="<?=$fieldtype->id ?>" <?= $field->type == $fieldtype->id ? ' selected' : '' ?>>
                                         <?= $fieldtype->name ?>
@@ -56,7 +60,7 @@
                                 </select>
                             </td>
                             <td width="75">
-                                <select name="field-list[]">
+                                <select name="field-list[]" class="uk-select">
                                     <option value="1" <?= $field->list ? 'selected' : '' ?>>Yes</option>
                                     <option value="0" <?= !$field->list ? 'selected' : '' ?>>No</option>
                                 </select>
@@ -66,8 +70,8 @@
                                 <input type="hidden" name="field-slug[]" value="<?= $field->slug ? '1' : '0' ?>">
                             </td>
                             <td width="30">
-                                <button id="delete-field" type="button" class="uk-button uk-button-danger">
-                                    <i class="uk-icon-trash"></i>
+                                <button id="delete-field" type="button" class="uk-icon-button uk-button-danger"
+                                uk-icon="icon: trash">
                                 </button>
                             </td>
                             <td width="30">

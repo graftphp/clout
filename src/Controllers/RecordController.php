@@ -58,7 +58,7 @@ class RecordController extends CloutController
             $item->delete();
         }
 
-        $this->store_data($section, $record);
+        $this->storeData($section, $record);
 
         Functions::redirect(Settings::cloutURL() . '/sections/' . $section->slug);
     }

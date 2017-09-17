@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clout Dashboard</title>
     <link href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/_/style.css" rel="stylesheet">
+    <script src="<?= \GraftPHP\Clout\Settings::cloutURL()?>/_/script.js"></script>
     {css}
 </head>
 <body class="uk-height-1-1">
@@ -18,14 +19,13 @@
         </div>
 
         <div class="uk-width-expand">
-            <div class="uk-container uk-container-center">
+            <div class="uk-container uk-container-center uk-padding">
                 {body}
             </div>
         </div>
 
     </div>
 
-    <script src="<?= \GraftPHP\Clout\Settings::cloutURL()?>/_/script.js"></script>
     {script}
 </body>
 </html>

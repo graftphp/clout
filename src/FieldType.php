@@ -28,22 +28,22 @@ class FieldType extends Model
 
     static private $fieldtype_templates = [
         1 => '
-        <input type="text" name="{name}" value="{value}" class="uk-width-1-1">
+        <input type="text" name="{name}" value="{value}" class="uk-input">
         ',
         2 => '
-        <input type="number" step="1" name="{name}" value="{value}">
+        <input type="number" step="1" name="{name}" value="{value}" class="uk-inpue">
         ',
         3 => '
-        <input type="text" name="{name}" value="{value}" data-uk-datepicker="{format:\'YYYY-MM-DD\'}">
+        <input type="text" name="{name}" value="{value}" class="uk-input" data-uk-datepicker="{format:\'YYYY-MM-DD\'}">
         ',
         4 => '
-        <textarea name="{name}" class="uk-width-1-1">{value}</textarea>
+        <textarea name="{name}" class="uk-width-1-1" class="uk-textarea">{value}</textarea>
         ',
         5 => '
         <textarea name="{name}" class="uk-width-1-1" data-uk-htmleditor>{value}</textarea>
         ',
         6 => '
-        <select name="{name}">
+        <select name="{name}" class="uk-select">
             <option value="1" {selected=1}>Yes</option>
             <option value="0" {selected=0}>No</option>
         </select>
