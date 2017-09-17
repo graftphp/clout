@@ -4,14 +4,16 @@
 
     <ul class="uk-nav">
         <li class="uk-nav-header">Content</li>
-        <?php if($sections) : ?>
+        <?php if($sections->count() > 0) : ?>
             <?php foreach($sections as $section) : ?>
             <li>
                 <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>">
                     <?= $section->name ?>
                 </a>
             </li>
-            <?php endforeach ?>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/sections/create">Add a Section</a>
         <?php endif; ?>
         <li class="uk-nav-header">System</li>
         <li>
