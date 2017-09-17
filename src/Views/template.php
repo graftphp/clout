@@ -13,11 +13,11 @@
 
     <div class="uk-grid uk-height-1-1">
 
-        <div class="uk-width-1-5 uk-height-1-1">
+        <div class="uk-width-auto uk-height-1-1">
             <?php require('components/nav.php') ?>
         </div>
 
-        <div class="uk-width-4-5">
+        <div class="uk-width-expand">
             <div class="uk-container uk-container-center">
                 {body}
             </div>

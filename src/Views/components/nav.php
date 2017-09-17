@@ -1,6 +1,5 @@
-<h1>Clout</h1>
-
-<div class="uk-panel uk-panel-box">
+<div class="uk-padding uk-background-secondary uk-height-1-1 uk-light">
+    <h1>Clout</h1>
 
     <ul class="uk-nav">
         <li class="uk-nav-header">Content</li>
