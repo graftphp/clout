@@ -31,7 +31,7 @@ class FieldType extends Model
         <input type="text" name="{name}" value="{value}" class="uk-input">
         ',
         2 => '
-        <input type="number" step="1" name="{name}" value="{value}" class="uk-inpue">
+        <input type="number" step="1" name="{name}" value="{value}" class="uk-input">
         ',
         3 => '
         <input type="text" name="{name}" value="{value}" class="uk-input" data-uk-datepicker="{format:\'YYYY-MM-DD\'}">

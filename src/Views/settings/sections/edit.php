@@ -66,13 +66,12 @@
                                 </select>
                             </td>
                             <td width="30" class="uk-text-center">
-                                <input type="radio" name="slug" value="1" <?= $field->slug ? 'checked' : '' ?> required>
+                                <input type="radio" name="slug" value="1" <?= $field->slug ? 'checked' : '' ?> class="uk-radio" required>
                                 <input type="hidden" name="field-slug[]" value="<?= $field->slug ? '1' : '0' ?>">
                             </td>
                             <td width="30">
-                                <button id="delete-field" type="button" class="uk-icon-button uk-button-danger"
-                                uk-icon="icon: trash">
-                                </button>
+                                <button type="button" class="delete-field uk-icon-button uk-button-danger"
+                                uk-icon="icon: trash"></button>
                             </td>
                             <td width="30">
                                 <div class="uk-sortable-handle">
@@ -98,14 +97,16 @@
         <table class="uk-table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Section</th>
-                    <th>Multiple?</th>
-                    <th></th>
+                    <th width="200">Name</th>
+                    <th width="200">Section</th>
+                    <th width="50">Multiple?</th>
+                    <th width="50"></th>
                 </tr>
             </thead>
         </table>
         <div id="relationships-sortable">
+            <button id="delete-relationship" type="button" class="uk-icon-button uk-button-danger"
+            uk-icon="icon: trash"></button>
         </div>
 
     <hr />
@@ -119,10 +120,10 @@
         <input type="hidden" name="field-id[]" value="">
         <input type="hidden" name="field-order[]" class="field-order" value="">
         <td>
-            <input type="text" name="field-name[]" class="field-id uk-width-1-1">
+            <input type="text" name="field-name[]" class="field-id uk-input">
         </td>
         <td width="200">
-            <select name="field-type[]" class="uk-width-1-1">
+            <select name="field-type[]" class="uk-width-1-1 uk-select">
                 <?php foreach ($fieldtypes as $fieldtype): ?>
                 <option value="<?=$fieldtype->id?>">
                     <?= $fieldtype->name ?>
@@ -131,19 +132,18 @@
             </select>
         </td>
         <td width="75">
-            <select name="field-list[]">
+            <select name="field-list[]" class="uk-select">
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
         </td>
         <td width="30" class="uk-text-center">
-            <input type="radio" name="slug" required>
+            <input type="radio" name="slug" class="uk-radio" required>
             <input type="hidden" name="field-slug[]" value="0">
         </td>
         <td width="30">
-            <button id="delete-field" type="button" class="uk-button uk-button-danger">
-                <i class="uk-icon-trash"></i>
-            </button>
+            <button type="button" class="delete-field uk-icon-button uk-button-danger"
+            uk-icon="icon: trash"></button>
         </td>
         <td width="30">
             <div class="uk-sortable-handle">
@@ -156,22 +156,23 @@
 <table id="relationship-template" class="uk-table" style="display:none;">
     <tr class="relationship">
         <input type="hidden" name="relationship-id[]" value="">
-        <td>
-            <input type="text" name="relationship-name[]" class="relationship-id uk-width-1-1">
+        <td width="200">
+            <input type="text" name="relationship-name[]" class="relationship-id uk-input">
         </td>
-        <td>
-            <select name="relationship-section[]">
+        <td width="200">
+            <select name="relationship-section[]" class="uk-select">
                 <?php foreach($sections as $section) : ?>
                     <option value="<?= $section->id ?>"><?= $section->name ?></option>
                 <?php endforeach; ?>
             </select>
         </td>
-        <td>
-            <select name="relationship-multiple[]">
+        <td width="50">
+            <select name="relationship-multiple[]" class="uk-select">
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
         </td>
+        <td width="50"></td>
     </tr>
 </table>
 
@@ -189,7 +190,7 @@
             setOrderBy();
         });
 
-        $('body').on('click', '#delete-field', function() {
+        $('body').on('click', '.delete-field', function() {
             $(this).closest('.field').remove();
             setOrderBy();
         });
