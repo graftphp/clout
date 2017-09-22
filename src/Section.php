@@ -41,6 +41,13 @@ class Section extends Model
             ->get();
     }
 
+    public function relationships()
+    {
+        return Relationship::where('parent_section', '=', $this->id)
+            ->orderBy('id', 'asc')
+            ->get();
+    }
+
     public function slugField()
     {
         return Field::where('section', '=', $this->id)->get()->first();

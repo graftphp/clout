@@ -13,5 +13,6 @@ class Relationship extends Model
         ['name', 'varchar(255)'],
         ['parent_section', 'int'],
         ['child_section', 'int'],
+        ['multiple', 'bool'],
     ];
 }

@@ -4,6 +4,7 @@ namespace GraftPHP\Clout\Controllers;
 
 use GraftPHP\Clout\Field;
 use GraftPHP\Clout\FieldType;
+use GraftPHP\Clout\Relationship;
 use GraftPHP\Clout\Section;
 use GraftPHP\Clout\Settings;
 use GraftPHP\Framework\Functions;
@@ -101,6 +102,33 @@ class SectionController extends CloutController
             }
         }
 
+        // delete relationships not in the POST data
+        foreach ($section->relationships() as $relationship) {
+            $del = true;
+            if (isset($_POST['relationship-id'])) {
+                for ($r = 0; $r < count($_POST['relationship-id']); $r++) {
+                    if (intval($relationship->id) == intval($_POST['relationship-id'][$r])) {
+                        $del = false;
+                    }
+                }
+            }
+            if (del) {
+                $relationship->delete();
+            }
+        }
+
+        // add/update relationships in the POST data
+        if (isset($_POST['relationship-name'])) {
+            for ($r = 0; $r < count($_POST['relationship-id']); $r++) {
+                $relationship = new Relationship();
+                $relationship->id = ($_POST['relationship-id'][$r] != '' ? $_POST['field_id'][$r] : null);
+                $relationship->name = $_POST['relationship-name'][$r];
+                $relationship->parent_section = $section->id;
+                $relationship->child_section = $_POST['relationship-section'][$r];
+                $relationship->multiple = $_POST['relationship-multiple'][$r];
+                $relationship->save();
+            }
+        }
         Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->id);
     }
 }
