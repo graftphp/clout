@@ -3,6 +3,9 @@
 namespace GraftPHP\Clout;
 
 use GraftPHP\Framework\Model;
+use GraftPHP\Clout\Data;
+use GraftPHP\Clout\Field;
+use GraftPHP\Clout\Section;
 
 class Record extends Model
 {
@@ -13,4 +16,9 @@ class Record extends Model
         ['section', 'int'],
         ['slug', 'varchar(255)'],
     ];
+
+    public function section()
+    {
+        return Section::where('id', '=', $this->section)->get()->first();
+    }
 }

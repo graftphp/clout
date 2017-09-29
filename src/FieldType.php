@@ -37,10 +37,10 @@ class FieldType extends Model
         <input type="text" name="{name}" value="{value}" class="uk-input" data-uk-datepicker="{format:\'YYYY-MM-DD\'}">
         ',
         4 => '
-        <textarea name="{name}" class="uk-width-1-1" class="uk-textarea">{value}</textarea>
+        <textarea name="{name}" class="uk-textarea">{value}</textarea>
         ',
         5 => '
-        <textarea name="{name}" class="uk-width-1-1" data-uk-htmleditor>{value}</textarea>
+        <textarea name="{name}" class="uk-textarea" data-uk-htmleditor>{value}</textarea>
         ',
         6 => '
         <select name="{name}" class="uk-select">

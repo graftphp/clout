@@ -7,7 +7,7 @@
     <form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/store"
         class="uk-form uk-form-horizontal">
         <?php foreach ($section->fields() as $field) : ?>
-            <div>
+            <div class="uk-margin">
                 <label class="uk-form-label" for="f<?= $field->id ?>">
                     <?= $field->name ?>
                 </label>
@@ -16,7 +16,7 @@
                 </div>
             </div>
         <?php endforeach; ?>
-        <div class="uk-margin-top">
+        <div class="uk-margin">
             <div class="uk-form-controls">
                 <button type="submit" class="uk-button uk-button-primary">Create <?= $section->name ?></button>
             </div>

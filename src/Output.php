@@ -38,6 +38,19 @@ class Output
         }
     }
 
+    private function listFunc($slug)
+    {
+        $section = Section::find($slug, 'slug');
+        $slug = $section->slugField();
+
+        $this->sql = "SELECT r.id AS `id`, d." . $slug->type()->datafield . " AS `value`
+            FROM clout_record r
+            INNER JOIN clout_data d ON r.id = d.record AND d.field = " . $slug->id . "
+            WHERE r.section = " . intval($section->id);
+
+        return $this;
+    }
+
     private function sectionFunc($slug)
     {
         $section = Section::find($slug, 'slug');
