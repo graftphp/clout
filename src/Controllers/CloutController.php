@@ -24,6 +24,7 @@ class CloutController
         \GraftPHP\Clout\Field::build();
         \GraftPHP\Clout\FieldType::build();
         \GraftPHP\Clout\Record::build();
+        \GraftPHP\Clout\Relation::build();
         \GraftPHP\Clout\Relationship::build();
         \GraftPHP\Clout\Section::build();
         \GraftPHP\Clout\User::build();

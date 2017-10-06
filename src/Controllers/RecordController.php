@@ -6,6 +6,7 @@ use GraftPHP\Clout\Data;
 use GraftPHP\Clout\Field;
 use GraftPHP\Clout\FieldType;
 use GraftPHP\Clout\Record;
+use GraftPHP\Clout\Relation;
 use GraftPHP\Clout\Section;
 use GraftPHP\Clout\Settings;
 use GraftPHP\Clout\Output;
@@ -99,12 +100,32 @@ class RecordController extends CloutController
 
     private function storeData($section, $record)
     {
+        foreach ($section->relationships() as $relationship) {
+            $data = Relation::where('relationship', '=', $relationship->id)
+                ->where('parent', '=', $record->id)
+                ->get();
+
+            foreach ($data as $item) {
+                $item->delete();
+            }
+            $name = 'r' . $relationship->id;
+            if (isset($_POST[$name])) {
+                foreach($_POST[$name] as $item) {
+                    $relation = new Relation();
+                    $relation->relationship = $relationship->id;
+                    $relation->parent = $record->id;
+                    $relation->child = $item;
+                    $relation->save();
+                }
+            }
+        }
+
         foreach ($section->fields() as $field) {
             if (isset($_POST['f' . $field->id])) {
                 $data = new Data();
                 $data->record = $record->id;
                 $data->field = $field->id;
-                $data->{$field->type()->datafield} = $_POST['f' . $field->id];
+                $data->{$field->type()->datafield} = empty($_POST['f' . $field->id]) ? null : $_POST['f' . $field->id];
                 $data->save();
             }
         }

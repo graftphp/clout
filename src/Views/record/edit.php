@@ -22,7 +22,8 @@
                 <div class="uk-form-controls">
                     <?php foreach (\GraftPHP\Clout\Output::list($relationship->childSection()->slug)->all() as $option) : ?>
                         <div><label>
-                            <input type="<?= $relationship->multiple ? 'checkbox' : 'radio' ?>" class="uk-checkbox" value="<?= $option->id ?>" name="r<?= $relationship->id ?>">
+                            <input type="<?= $relationship->multiple ? 'checkbox' : 'radio' ?>"
+                                class="uk-checkbox" value="<?= $option->id ?>" name="r<?= $relationship->id ?>[]">
                             <?= $option->value ?>
                         </label></div>
                     <?php endforeach; ?>
