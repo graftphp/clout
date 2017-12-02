@@ -3,6 +3,7 @@ js_files = {
         'bower_components/jquery/dist/jquery.js',
         'bower_components/uikit/dist/js/uikit.js',
         'bower_components/uikit/dist/js/uikit-icons.js',
+        'bower_components/tinymce/tinymce.js',
         './js/**/*.js'
     ]
 };
@@ -35,7 +36,7 @@ module.exports = function(grunt) {
         copy: {
             main: {
                 files: [
-                    // { expand: true, cwd: 'bower_components/uikit/fonts', src: '*', dest: '../src/Assets/fonts/' }
+                    { expand: true, cwd: 'bower_components/tinymce', src: '**/*', dest: '../src/Assets/tinymce/' }
                 ]
             }
         },

@@ -40,7 +40,7 @@ class FieldType extends Model
         <textarea name="{name}" class="uk-textarea">{value}</textarea>
         ',
         5 => '
-        <textarea name="{name}" class="uk-textarea" data-uk-htmleditor>{value}</textarea>
+        <textarea name="{name}" class="wysiwyg" data-uk-htmleditor>{value}</textarea>
         ',
         6 => '
         <select name="{name}" class="uk-select">
