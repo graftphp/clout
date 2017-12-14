@@ -14,9 +14,10 @@ class Settings
         $this->routes = [
             [static::cloutURL() . '', $this->namespace . '\CloutController', 'login'],
             [static::cloutURL() . '/_/{}', $this->namespace . '\CloutController', 'asset'],
+            [static::cloutURL() . '/home', $this->namespace . '\CloutController', 'dashboard'],
             [static::cloutURL() . '/login', $this->namespace . '\SessionController', 'create'],
             [static::cloutURL() . '/logout', $this->namespace . '\SessionController', 'delete'],
-            [static::cloutURL() . '/home', $this->namespace . '\CloutController', 'dashboard'],
+            [static::cloutURL() . '/upload/{}/{}', $this->namespace . '\UploadController', 'upload'],
             [static::cloutURL() . '/sections/{}/{}/delete', $this->namespace . '\RecordController', 'delete'],
             [static::cloutURL() . '/sections/{}/{}/edit', $this->namespace . '\RecordController', 'edit'],
             [static::cloutURL() . '/sections/{}/{}/update', $this->namespace . '\RecordController', 'update'],
@@ -40,6 +41,22 @@ class Settings
     public static function cloutURL()
     {
         return '/clout';
+    }
+
+    public static function storagePath()
+    {
+        $path = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . '_' . DIRECTORY_SEPARATOR . 'clout' . DIRECTORY_SEPARATOR;
+
+        if (!file_exists($path)) {
+            mkdir($path, 0700, true);
+        }
+
+        return $path;
+    }
+
+    public function storageURL()
+    {
+        return '/_/clout/';
     }
 
     public static function viewFolder()

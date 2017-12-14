@@ -24,6 +24,8 @@ class FieldType extends Model
         ['2', 'Whole Number', 'int', 'number_data', 'Whole number, -2147483648 to 2147483647'],
         ['3', 'Date', 'date', 'date_data', 'Date'],
         ['6', 'Yes/No', 'boolean', 'boolean_data', 'Boolean'],
+        ['7', 'File', 'varchar(255)', 'string_data', 'File Upload'],
+        ['8', 'Image', 'varchar(255)', 'string_data', 'Image Upload'],
     ];
 
     static private $fieldtype_templates = [
@@ -48,6 +50,28 @@ class FieldType extends Model
             <option value="0" {selected=0}>No</option>
         </select>
         ',
+        7 => '
+        <div class="upload-file uk-placeholder uk-text-center" id="upload-{field_id}">
+            <span uk-icon="icon: cloud-upload"></span>
+            <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+            <div uk-form-custom>
+                <input type="file" multiple>
+                <span class="uk-link">selecting one</span>
+            </div>
+        </div>
+        <progress id="bar-{field_id}" class="uk-progress" value="0" max="100" hidden></progress>
+        ',
+        8 => '
+        <div class="upload-image uk-placeholder uk-text-center" id="upload-{field_id}">
+            <span uk-icon="icon: cloud-upload"></span>
+            <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+            <div uk-form-custom>
+                <input type="file" multiple>
+                <span class="uk-link">selecting one</span>
+            </div>
+        </div>
+        <progress id="bar-{field_id}" class="uk-progress" value="0" max="100" hidden></progress>
+        ',
     ];
 
     public static function render($field_id, $name, $value = '')
@@ -55,6 +79,7 @@ class FieldType extends Model
         $out = self::$fieldtype_templates[$field_id];
         $out = str_replace('{name}', $name, $out);
         $out = str_replace('{value}', $value, $out);
+        $out = str_replace('{field_id}', $field_id, $out);
 
         $out = str_replace('{selected=' . $value . '}', 'selected', $out);
         $out = preg_replace("/\{selected=[\d]\}/", '', $out);

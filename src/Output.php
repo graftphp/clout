@@ -4,7 +4,7 @@ namespace GraftPHP\Clout;
 
 use GraftPHP\Clout\Section;
 use GraftPHP\Framework\DB;
-use GraftPHP\Framework\magicCall;
+use GraftPHP\Framework\MagicCall;
 
 class Output
 {
