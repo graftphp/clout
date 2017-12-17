@@ -30,6 +30,12 @@ class Settings
             [static::cloutURL() . '/settings/sections/{}/delete', $this->namespace . '\SectionController', 'delete'],
             [static::cloutURL() . '/settings/sections/{}/update', $this->namespace . '\SectionController', 'update'],
             [static::cloutURL() . '/settings/sections/{}', $this->namespace . '\SectionController', 'show'],
+            [static::cloutURL() . '/settings/users', $this->namespace . '\UserController', 'index'],
+            [static::cloutURL() . '/settings/users/create', $this->namespace . '\UserController', 'create'],
+            [static::cloutURL() . '/settings/users/store', $this->namespace . '\UserController', 'store'],
+            [static::cloutURL() . '/settings/users/{}/delete', $this->namespace . '\UserController', 'delete'],
+            [static::cloutURL() . '/settings/users/{}/update', $this->namespace . '\UserController', 'update'],
+            [static::cloutURL() . '/settings/users/{}', $this->namespace . '\UserController', 'edit'],
         ];
     }
 
