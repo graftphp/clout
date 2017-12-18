@@ -40,7 +40,7 @@ class UserController extends CloutController
 	{
 		$user = new User();
 		$user->username = $_POST['username'];
-		$user->password = password_hash($_POST['password']);
+		$user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$user->active = $_POST['active'];
 		$user->save();
 
@@ -52,9 +52,11 @@ class UserController extends CloutController
 		$user = User::find($user_id);
 		$user->username = $_POST['username'];
 		if (isset($_POST['password'])) {
-			$user->password = password_hash($_POST['password']);
+			$user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		}
-		$user->active = $_POST['active'];
+		if ($user_id != 1) {
+			$user->active = $_POST['active'];
+		}
 		$user->save();
 
 		Functions::redirect(Settings::cloutURL() . '/settings/users');

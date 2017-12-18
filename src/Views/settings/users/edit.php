@@ -25,6 +25,7 @@
             <small>(leave blank to keep current password)</small>
         </div>
     </div>
+    <?php if ($user->id != 1) : ?>
     <div>
         <label class="uk-form-label">
             Active?
@@ -36,6 +37,7 @@
                 <?= $user->active == 0 ? 'checked' : '' ?>> No</label>
         </div>
     </div>
+    <?php endif; ?>
     <div class="uk-margin-top">
         <div class="uk-form-controls">
             <button type="submit" class="uk-button uk-button-primary">Update User</button>
