@@ -57,7 +57,9 @@ class RecordController extends CloutController
 
         $data = Data::where('record', '=', $record_id)->get();
         foreach ($data as $item) {
-            $item->delete();
+            if ($item->field()->type()->special == 0) {
+                $item->delete();
+            }
         }
 
         $this->storeData($section, $record);

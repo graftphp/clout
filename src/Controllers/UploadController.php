@@ -12,15 +12,33 @@ class UploadController extends CloutController
         $path = Settings::storagePath() . $record_id . DIRECTORY_SEPARATOR . $field_id . DIRECTORY_SEPARATOR;
 
         if (!file_exists($path)) {
-            mkdir($path, 0700, true);
+            mkdir($path, 0755, true);
         }
 
         if (move_uploaded_file($_FILES['files']['tmp_name'][0], $path . $_FILES['files']['name'][0])) {
             $data = Data::where('record', '=', $record_id)
-                ->where('field', '=', $field_id)->first();
-            dd($data);
-            return 'ok';
-        }
+                ->where('field', '=', $field_id)->get()->first();
+            if (!$data) {
+                $data = new Data();
+                $data->record = $record_id;
+                $data->field = $field_id;
+                $content = [[
+                    'order' => 1,
+                    'file' => $_FILES['files']['name'][0],
+                    'caption' => $_FILES['files']['name'][0],
+                ]];
+            } else {
+                $content = json_decode($data->text_data);
+                $content[] = [
+                    'order' => count($content)+1,
+                    'file' => $_FILES['files']['name'][0],
+                    'caption' => $_FILES['files']['name'][0],
+                ];
+            }
+            $data->text_data = json_encode($content);
+            $data->save();
 
+            echo "ok";
+        }
     }
 }

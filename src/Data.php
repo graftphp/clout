@@ -18,4 +18,9 @@ class Data extends Model
         ['text_data', 'text'],
         ['boolean_data', 'boolean'],
     ];
+
+    public function field()
+    {
+        return Field::where('id', '=', $this->field)->get()->first();
+    }
 }

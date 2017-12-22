@@ -60,7 +60,7 @@ class Settings
         return $path;
     }
 
-    public function storageURL()
+    public static function storageURL()
     {
         return '/_/clout/';
     }

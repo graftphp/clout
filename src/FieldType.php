@@ -14,18 +14,19 @@ class FieldType extends Model
         ['datatype', 'varchar(255)'],
         ['datafield', 'varchar(255)'],
         ['description', 'text'],
+        ['special', 'boolean'], // special fields are not updated by the global record update eg. file uploads, handled by their own functions.
     ];
 
     static public $db_defaultdata = [
-        //[id, name, fieldtype, data field, description]
-        ['1', 'Short Text', 'varchar(255)', 'string_data', 'Text, up to 255 characters'],
-        ['4', 'Long Text (plain)', 'text', 'text_data', ''],
-        ['5', 'Long Text (formatted)', 'text', 'text_data', ''],
-        ['2', 'Whole Number', 'int', 'number_data', 'Whole number, -2147483648 to 2147483647'],
-        ['3', 'Date', 'date', 'date_data', 'Date'],
-        ['6', 'Yes/No', 'boolean', 'boolean_data', 'Boolean'],
-        ['7', 'File', 'varchar(255)', 'string_data', 'File Upload'],
-        ['8', 'Image', 'varchar(255)', 'string_data', 'Image Upload'],
+        //[id, name, fieldtype, data field, description, special]
+        ['1', 'Short Text', 'varchar(255)', 'string_data', 'Text, up to 255 characters', 0],
+        ['4', 'Long Text (plain)', 'text', 'text_data', '', 0],
+        ['5', 'Long Text (formatted)', 'text', 'text_data', '', 0],
+        ['2', 'Whole Number', 'int', 'number_data', 'Whole number, -2147483648 to 2147483647', 0],
+        ['3', 'Date', 'date', 'date_data', 'Date', 0],
+        ['6', 'Yes/No', 'boolean', 'boolean_data', 'Boolean', 0],
+        ['7', 'File', 'varchar(255)', 'text_data', 'File Upload', 1],
+        ['8', 'Image', 'varchar(255)', 'text_data', 'Image Upload', 1],
     ];
 
     static private $fieldtype_templates = [
@@ -53,10 +54,10 @@ class FieldType extends Model
         7 => '
         <div class="upload-file uk-placeholder uk-text-center" id="upload-{field_id}">
             <span uk-icon="icon: cloud-upload"></span>
-            <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+            <span class="uk-text-middle">Drop a file here or</span>
             <div uk-form-custom>
                 <input type="file" multiple>
-                <span class="uk-link">selecting one</span>
+                <span class="uk-link">select one</span>
             </div>
         </div>
         <progress id="bar-{field_id}" class="uk-progress" value="0" max="100" hidden></progress>
@@ -64,10 +65,10 @@ class FieldType extends Model
         8 => '
         <div class="upload-image uk-placeholder uk-text-center" id="upload-{field_id}">
             <span uk-icon="icon: cloud-upload"></span>
-            <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+            <span class="uk-text-middle">Drop a picture here or</span>
             <div uk-form-custom>
                 <input type="file" multiple>
-                <span class="uk-link">selecting one</span>
+                <span class="uk-link">select one</span>
             </div>
         </div>
         <progress id="bar-{field_id}" class="uk-progress" value="0" max="100" hidden></progress>

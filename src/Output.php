@@ -60,6 +60,10 @@ class Output
     {
         $this->section = Section::find($slug, 'slug');
 
+        if (!$this->section) {
+            dd('Section not found - ' . $slug);
+        }
+
         $this->sql = "SELECT r.id";
         foreach ($this->section->fields() as $field) {
             $type = $field->type();

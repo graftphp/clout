@@ -13,6 +13,16 @@
                     <label class="uk-form-label for="f<?= $field->id ?>"><?= $field->name ?></label>
                     <div class="uk-form-controls">
                     <?= \GraftPHP\Clout\Fieldtype::render($field->type, 'f' . $field->id, $record->{$field->name}) ?>
+                    <?php if ($field->type == 8 && !empty($record->{$field->name})) : ?>
+                        <div id="images-<?= $field->id ?>">
+                            <div>
+                                <?php foreach (json_decode($record->{$field->name}) as $_image) : ?>
+                                    <img src="<?= \GraftPHP\Clout\Settings::storageURL()?>/<?= $record->id ?>/<?= $field->id ?>/<?= $_image->file ?>"
+                                        width="100" />
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -47,13 +57,14 @@
 <?php foreach ($section->fields() as $field) : ?>
 <?php if ($field->type == 7 || $field->type == 8) : ?>
 <script>
+$(function() { $.ajaxSetup({ cache: false }); });
 
     var bar = document.getElementById('bar-<?= $field->id ?>');
 
     UIkit.upload('#upload-<?= $field->id ?>', {
 
         url: '<?= \GraftPHP\Clout\Settings::cloutURL()?>/upload/<?= $record->id ?>/<?= $field->id ?>',
-        multiple: true,
+        multiple: false,
         loadStart: function (e) {
             console.log('loadStart', arguments);
 
@@ -70,6 +81,8 @@
             bar.value = e.loaded;
         },
         completeAll: function () {
+            console.log('complete');
+            $('#images-<?= $field->id ?>').load('/clout/sections/portfolio/<?= $record->id ?>/edit #images-<?= $field->id ?> div');
             setTimeout(function () {
                 bar.setAttribute('hidden', 'hidden');
             }, 1000);
