@@ -11,12 +11,21 @@ class CloutController
 {
     public function __construct()
     {
+        if (!isset($_SESSION['userid'])) {
+            if (
+                $_SERVER['REQUEST_URI'] != Settings::cloutURL()
+                && $_SERVER['REQUEST_URI'] != Settings::cloutURL() . '/login'
+                && substr($_SERVER['REQUEST_URI'], 0, strlen(Settings::storageURL())) === Settings::storageURL()
+            ) {
+                Functions::redirect(Settings::cloutURL());
+            }
+        }
+
         if (GRAFT_CONFIG['DBHost'] == '' ||
             GRAFT_CONFIG['DBName'] == '' ||
             GRAFT_CONFIG['DBUser'] == '') {
             die('A database connection is required to run clout.');
         }
-
         // instance everything so the db gets setup
         // probably need a better way to do this
         // in the future #TODO
