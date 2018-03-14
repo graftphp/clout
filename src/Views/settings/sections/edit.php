@@ -4,7 +4,7 @@
 
 <h1>Update the <?= $section->name ?> Section</h1>
 
-<form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>/update"
+<form method="post" action="<?= clout_settings('clout_url')?>/settings/sections/<?= $section->id ?>/update"
     class="uk-form uk-form-horizontal">
 
     <div>

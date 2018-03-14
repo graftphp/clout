@@ -9,7 +9,7 @@ class UploadController extends CloutController
 {
     public function upload($record_id, $field_id)
     {
-        $path = Settings::storagePath() . $record_id . DIRECTORY_SEPARATOR . $field_id . DIRECTORY_SEPARATOR;
+        $path = clout_settings('storage_path') . $record_id . DIRECTORY_SEPARATOR . $field_id . DIRECTORY_SEPARATOR;
 
         if (!file_exists($path)) {
             mkdir($path, 0755, true);

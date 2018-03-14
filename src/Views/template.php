@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clout Dashboard</title>
-    <link href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/_/style.css" rel="stylesheet">
-    <script src="<?= \GraftPHP\Clout\Settings::cloutURL()?>/_/script.js"></script>
+    <link href="<?= clout_settings('clout_url')?>/_/style.css" rel="stylesheet">
+    <script src="<?= clout_settings('clout_url')?>/_/script.js"></script>
     {css}
 </head>
 <body class="uk-height-1-1">

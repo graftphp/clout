@@ -13,11 +13,11 @@ class CloutController
     {
         if (!isset($_SESSION['userid'])) {
             if (
-                $_SERVER['REQUEST_URI'] != Settings::cloutURL()
-                && $_SERVER['REQUEST_URI'] != Settings::cloutURL() . '/login'
-                && substr($_SERVER['REQUEST_URI'], 0, strlen(Settings::storageURL())) === Settings::storageURL()
+                $_SERVER['REQUEST_URI'] != clout_settings('clout_url')
+                && $_SERVER['REQUEST_URI'] != clout_settings('clout_url') . '/login'
+                && substr($_SERVER['REQUEST_URI'], 0, strlen(clout_settings('storage_url'))) === clout_settings('storage_url')
             ) {
-                Functions::redirect(Settings::cloutURL());
+                Functions::redirect(clout_settings('clout_url'));
             }
         }
 
@@ -35,6 +35,7 @@ class CloutController
         \GraftPHP\Clout\Record::build();
         \GraftPHP\Clout\Relation::build();
         \GraftPHP\Clout\Relationship::build();
+        \GraftPHP\Clout\Settings::build();
         \GraftPHP\Clout\Section::build();
         \GraftPHP\Clout\User::build();
 
@@ -43,7 +44,7 @@ class CloutController
 
     public function asset($file)
     {
-        $path = Settings::assetFolder() . $file;
+        $path = clout_settings('asset_folder') . $file;
         $info = pathinfo($path);
         header_remove();
         switch ($info['extension']) {
@@ -60,15 +61,15 @@ class CloutController
 
     public function dashboard()
     {
-        View::Render('home', $this->data, Settings::viewFolder());
+        View::Render('home', $this->data, clout_settings('view_folder'));
     }
 
     public function login()
     {
         if (isset($_SESSION['userid'])) {
-            Functions::redirect(Settings::cloutURL() . '/home');
+            Functions::redirect(clout_settings('url') . '/home');
         }
 
-        View::Render('login', $this->data, Settings::viewFolder());
+        View::Render('login', $this->data, clout_settings('view_folder'));
     }
 }

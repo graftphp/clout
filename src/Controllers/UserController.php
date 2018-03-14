@@ -13,12 +13,12 @@ class UserController extends CloutController
 	{
 		$this->data['users'] = User::all();
 
-		View::Render('settings.users.list', $this->data, Settings::viewFolder());
+		View::Render('settings.users.list', $this->data, clout_settings('view_folder'));
 	}
 
     public function create()
     {
-        View::Render('settings.users.create', $this->data, Settings::viewFolder());
+        View::Render('settings.users.create', $this->data, clout_settings('view_folder'));
     }
 
     public function delete($user_id)
@@ -26,14 +26,14 @@ class UserController extends CloutController
         $user = User::find($user_id);
         $user->delete();
 
-        Functions::redirect(Settings::cloutURL() . '/settings/users');
+        Functions::redirect(clout_settings('clout_url') . '/settings/users');
     }
 
     public function edit($user_id)
     {
     	$this->data['user'] = User::find($user_id);
 
-    	View::Render('settings.users.edit', $this->data, Settings::viewFolder());
+    	View::Render('settings.users.edit', $this->data, clout_settings('view_folder'));
     }
 
 	public function store()
@@ -44,7 +44,7 @@ class UserController extends CloutController
 		$user->active = $_POST['active'];
 		$user->save();
 
-		Functions::redirect(Settings::cloutURL() . '/settings/users');
+		Functions::redirect(clout_settings('clout_url') . '/settings/users');
 	}
 
 	public function update($user_id)
@@ -59,6 +59,6 @@ class UserController extends CloutController
 		}
 		$user->save();
 
-		Functions::redirect(Settings::cloutURL() . '/settings/users');
+		Functions::redirect(clout_settings('clout_url') . '/settings/users');
 	}
 }

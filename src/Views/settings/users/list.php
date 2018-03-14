@@ -3,7 +3,7 @@
 {body}
 
     <h1>
-        <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/users/create" class="uk-button uk-button-primary uk-float-right">
+        <a href="<?= clout_settings('clout_url') ?>/settings/users/create" class="uk-button uk-button-primary uk-float-right">
             Create a User
             <i class="uk-icon-plus"></i>
         </a>
@@ -34,11 +34,11 @@
                             <?php endif; ?>
                         </td>
                         <td class="uk-text-right" nowrap>
-                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/users/<?= $_user->id ?>"
+                            <a href="<?= clout_settings('clout_url')?>/settings/users/<?= $_user->id ?>"
                                 class="uk-icon-button uk-button-primary" uk-icon="icon: pencil">
                             </a>
                             <?php if ($_user->id != 1) : ?>
-                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/users/<?= $_user->id ?>/delete"
+                            <a href="<?= clout_settings('clout_url')?>/settings/users/<?= $_user->id ?>/delete"
                                 class="uk-icon-button uk-button-danger" onclick="return confirm('Delete this user?');"
                                 uk-icon="icon: trash">
                             </a>

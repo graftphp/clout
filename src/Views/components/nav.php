@@ -6,29 +6,36 @@
         <?php if($sections->count() > 0) : ?>
             <?php foreach($sections as $section) : ?>
             <li>
-                <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/sections/<?= $section->slug ?>">
+                <a href="<?= clout_settings('clout_url') ?>/sections/<?= $section->slug ?>">
                     <?= $section->name ?>
                 </a>
             </li>
             <?php endforeach; ?>
         <?php else : ?>
-            <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/sections/create">Add a Section</a>
+            <a href="<?= clout_settings('clout_url') ?>/settings/sections/create">Add a Section</a>
         <?php endif; ?>
     </ul>
     <ul class="uk-nav uk-margin-top uk-text-small">
         <li class="uk-nav-header">System</li>
         <li>
-            <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/sections"
+            <a href="<?= clout_settings('clout_url') ?>/settings/sections"
             class="uk-text-muted">
-                <span uk-icon="icon: cog"></span>
+                <span uk-icon="icon: grid"></span>
                 <span class="uk-text-middle">&nbsp;Section Setup</span>
             </a>
         </li>
         <li>
-            <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/users"
-                class="uk-text-muted">
+            <a href="<?= clout_settings('clout_url') ?>/settings/users"
+            class="uk-text-muted">
                 <span uk-icon="icon: users"></span>
                 <span class="uk-text-middle">&nbsp;Users</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?= clout_settings('clout_url') ?>/settings"
+            class="uk-text-muted">
+                <span uk-icon="icon: cog"></span>
+                <span class="uk-text-middle">&nbsp;System Settings</span>
             </a>
         </li>
         <li>
@@ -46,7 +53,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/logout"
+            <a href="<?= clout_settings('clout_url') ?>/logout"
             class="uk-text-muted">
                 <span uk-icon="icon: sign-out"></span>
                 <span class="uk-text-middle">&nbsp;Log out</span>

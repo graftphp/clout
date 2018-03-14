@@ -4,7 +4,7 @@
 
     <h1>Create a <?= $section->name ?></h1>
 
-    <form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/store"
+    <form method="post" action="<?= clout_settings('clout_url')?>/sections/<?= $section->slug ?>/store"
         class="uk-form uk-form-horizontal" enctype="multipart/form-data">
 
         <?php foreach ($section->fields() as $field) : ?>

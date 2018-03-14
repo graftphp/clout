@@ -18,13 +18,13 @@ class SessionController
             }
         }
 
-        Functions::redirect(Settings::cloutURL());
+        Functions::redirect(clout_settings('clout_url'));
     }
 
     public function delete()
     {
         session_destroy();
 
-        Functions::redirect(Settings::cloutURL());
+        Functions::redirect(clout_settings('clout_url'));
     }
 }

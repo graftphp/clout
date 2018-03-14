@@ -3,7 +3,7 @@
 {body}
 
     <h1>
-        <a href="<?= \GraftPHP\Clout\Settings::cloutURL() ?>/settings/sections/create" class="uk-button uk-button-primary uk-float-right">
+        <a href="<?= clout_settings('clout_url') ?>/settings/sections/create" class="uk-button uk-button-primary uk-float-right">
             Create a Section
             <i class="uk-icon-plus"></i>
         </a>
@@ -28,11 +28,11 @@
                         <td><?= $section->name ?></td>
                         <td>-</td>
                         <td class="uk-text-right" nowrap>
-                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>"
+                            <a href="<?= clout_settings('clout_url')?>/settings/sections/<?= $section->id ?>"
                                 class="uk-icon-button uk-button-primary" uk-icon="icon: pencil">
                             </a>
 
-                            <a href="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/<?= $section->id ?>/delete"
+                            <a href="<?= clout_settings('clout_url')?>/settings/sections/<?= $section->id ?>/delete"
                                 class="uk-icon-button uk-button-danger" onclick="return confirm('Delete this section?');"
                                 uk-icon="icon: trash">
                             </a>

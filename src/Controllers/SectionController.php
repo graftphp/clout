@@ -19,7 +19,7 @@ class SectionController extends CloutController
 
     public function create()
     {
-        View::Render('settings.sections.create', $this->data, Settings::viewFolder());
+        View::Render('settings.sections.create', $this->data, clout_settings('view_folder'));
     }
 
     public function delete($section_id)
@@ -30,12 +30,12 @@ class SectionController extends CloutController
         }
         $section->delete();
 
-        Functions::redirect(Settings::cloutURL() . '/settings/sections');
+        Functions::redirect(clout_settings('clout_url') . '/settings/sections');
     }
 
     public function index()
     {
-        View::Render('settings.sections.list', $this->data, Settings::viewFolder());
+        View::Render('settings.sections.list', $this->data, clout_settings('view_folder'));
     }
 
     public function store()
@@ -49,7 +49,7 @@ class SectionController extends CloutController
         $section->slug = Functions::URLSafe($_POST['name']);
         $section->save();
 
-        Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->id);
+        Functions::redirect(clout_settings('clout_url') . '/settings/sections/' . $section->id);
     }
 
     public function show($section_id)
@@ -62,7 +62,7 @@ class SectionController extends CloutController
         $ft = new FieldType();
         $this->data['fieldtypes'] = $ft->all();
 
-        View::Render('settings.sections.edit', $this->data, Settings::viewFolder());
+        View::Render('settings.sections.edit', $this->data, clout_settings('view_folder'));
     }
 
     public function update($section_id)
@@ -129,6 +129,6 @@ class SectionController extends CloutController
                 $relationship->save();
             }
         }
-        Functions::redirect(Settings::cloutURL() . '/settings/sections/' . $section->id);
+        Functions::redirect(clout_settings('clout_url') . '/settings/sections/' . $section->id);
     }
 }

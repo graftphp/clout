@@ -4,7 +4,7 @@
 
 <h1>Create a Section</h1>
 
-<form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/sections/store"
+<form method="post" action="<?= clout_settings('clout_url')?>/settings/sections/store"
     class="uk-form uk-form-horizontal">
 
     <div>

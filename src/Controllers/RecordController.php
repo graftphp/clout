@@ -19,7 +19,7 @@ class RecordController extends CloutController
     {
         $this->data['section'] = Section::find($section, 'slug');
 
-        View::Render('record.create', $this->data, Settings::viewFolder());
+        View::Render('record.create', $this->data, clout_settings('view_folder'));
     }
 
     public function delete($section, $record_id)
@@ -35,7 +35,7 @@ class RecordController extends CloutController
 
         $record->delete();
 
-        Functions::redirect(Settings::cloutURL() . '/sections/' . $section);
+        Functions::redirect(clout_settings('clout_url') . '/sections/' . $section);
     }
 
     public function edit($section, $record_id)
@@ -44,7 +44,7 @@ class RecordController extends CloutController
 
         $this->data['record'] = Output::section($section)->find($record_id);
 
-        View::Render('record.edit', $this->data, Settings::viewFolder());
+        View::Render('record.edit', $this->data, clout_settings('view_folder'));
     }
 
     public function update($section, $record_id)
@@ -64,7 +64,7 @@ class RecordController extends CloutController
 
         $this->storeData($section, $record);
 
-        Functions::redirect(Settings::cloutURL() . '/sections/' . $section->slug);
+        Functions::redirect(clout_settings('clout_url') . '/sections/' . $section->slug);
     }
 
     public function show($section)
@@ -73,7 +73,7 @@ class RecordController extends CloutController
 
         $this->data['records'] = Output::section($section)->all();
 
-        View::Render('record.list', $this->data, Settings::viewFolder());
+        View::Render('record.list', $this->data, clout_settings('view_folder'));
     }
 
     public function store($section)
@@ -98,7 +98,7 @@ class RecordController extends CloutController
 
         $this->storeData($section, $record);
 
-        Functions::redirect(Settings::cloutURL() . '/sections/' . $section->slug);
+        Functions::redirect(clout_settings('clout_url') . '/sections/' . $section->slug);
     }
 
     private function storeData($section, $record)

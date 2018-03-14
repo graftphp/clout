@@ -4,7 +4,7 @@
 
     <h1>Edit <?= $section->name ?></h1>
 
-    <form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/sections/<?= $section->slug ?>/<?= $record->id ?>/update"
+    <form method="post" action="<?= clout_settings('clout_url')?>/sections/<?= $section->slug ?>/<?= $record->id ?>/update"
         class="uk-form uk-form-horizontal"  enctype="multipart/form-data">
 
         <?php foreach ($section->fields() as $field) : ?>
@@ -17,7 +17,7 @@
                         <div id="images-<?= $field->id ?>">
                             <div>
                                 <?php foreach (json_decode($record->{$field->name}) as $_image) : ?>
-                                    <img src="<?= \GraftPHP\Clout\Settings::storageURL()?>/<?= $record->id ?>/<?= $field->id ?>/<?= $_image->file ?>"
+                                    <img src="<?= clout_settings('storage_url')?>/<?= $record->id ?>/<?= $field->id ?>/<?= $_image->file ?>"
                                         width="100" />
                                 <?php endforeach; ?>
                             </div>
@@ -63,7 +63,7 @@ $(function() { $.ajaxSetup({ cache: false }); });
 
     UIkit.upload('#upload-<?= $field->id ?>', {
 
-        url: '<?= \GraftPHP\Clout\Settings::cloutURL()?>/upload/<?= $record->id ?>/<?= $field->id ?>',
+        url: '<?= clout_settings('clout_url')?>/upload/<?= $record->id ?>/<?= $field->id ?>',
         multiple: false,
         loadStart: function (e) {
             console.log('loadStart', arguments);

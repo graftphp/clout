@@ -4,7 +4,7 @@
 
 <h1>Update <?= $user->username ?> User</h1>
 
-<form method="post" action="<?= \GraftPHP\Clout\Settings::cloutURL()?>/settings/users/<?= $user->id ?>/update"
+<form method="post" action="<?= clout_settings('clout_url')?>/settings/users/<?= $user->id ?>/update"
     class="uk-form uk-form-horizontal">
 
     <div>
