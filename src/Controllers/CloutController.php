@@ -3,7 +3,7 @@
 namespace GraftPHP\Clout\Controllers;
 
 use GraftPHP\Clout\Section;
-use GraftPHP\Clout\Settings;
+use GraftPHP\Clout\Setting;
 use GraftPHP\Framework\Functions;
 use GraftPHP\Framework\View;
 
@@ -35,7 +35,7 @@ class CloutController
         \GraftPHP\Clout\Record::build();
         \GraftPHP\Clout\Relation::build();
         \GraftPHP\Clout\Relationship::build();
-        \GraftPHP\Clout\Settings::build();
+        \GraftPHP\Clout\Setting::build();
         \GraftPHP\Clout\Section::build();
         \GraftPHP\Clout\User::build();
 

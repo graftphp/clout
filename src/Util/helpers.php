@@ -1,6 +1,6 @@
 <?php
 
-use GraftPHP\Clout\Settings;
+use GraftPHP\Clout\Setting;
 use GraftPHP\Framework\DB;
 
 $clout_settings_array = [];
@@ -17,7 +17,7 @@ function clout_settings($setting)
             if (!isset($res->first()->value)) {
                 try {
                     $value = array_filter(
-                        Settings::$db_defaultdata,
+                        Setting::$db_defaultdata,
                         function ($k) use ($setting) {
                             return $k[1] == $setting;
                         }
@@ -39,7 +39,7 @@ function clout_settings($setting)
     } else {
         try {
             $value = array_filter(
-                Settings::$db_defaultdata,
+                Setting::$db_defaultdata,
                 function ($k) use ($setting) {
                     return $k[1] == $setting;
                 }

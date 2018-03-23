@@ -4,7 +4,7 @@ namespace GraftPHP\Clout;
 
 use GraftPHP\Framework\Model;
 
-class Settings extends Model
+class Setting extends Model
 {
     private $namespace = __NAMESPACE__ . '\Controllers';
 
@@ -17,10 +17,10 @@ class Settings extends Model
         ['value', 'varchar(255)'],
     ];
 
-    static public $db_defaultdata = [
+    public static $db_defaultdata = [
         //[id, label, value]
         ['1', 'clout_url', '/clout'],
-        ['2', 'view_folder', __DIR__ . DIRECTORY_SEPARATOR .  'Views' . DIRECTORY_SEPARATOR],
+        ['2', 'view_folder', __DIR__ . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR],
         ['3', 'storage_path', __DIR__ . DIRECTORY_SEPARATOR . '_' . DIRECTORY_SEPARATOR . 'clout' . DIRECTORY_SEPARATOR],
         ['4', 'storage_url', '/_/clout/'],
         ['5', 'asset_folder', __DIR__ . '/Assets/'],
@@ -44,7 +44,8 @@ class Settings extends Model
             [clout_settings('clout_url') . '/sections/{}/create', $this->namespace . '\RecordController', 'create'],
             [clout_settings('clout_url') . '/sections/{}/store', $this->namespace . '\RecordController', 'store'],
             [clout_settings('clout_url') . '/sections/{}', $this->namespace . '\RecordController', 'show'],
-            [clout_settings('clout_url') . '/settings', $this->namespace . '\SettingsController', 'index'],
+            [clout_settings('clout_url') . '/settings', $this->namespace . '\SettingController', 'index'],
+            [clout_settings('clout_url') . '/settings/update', $this->namespace . '\SettingController', 'update'],
             [clout_settings('clout_url') . '/settings/sections', $this->namespace . '\SectionController', 'index'],
             [clout_settings('clout_url') . '/settings/sections/create', $this->namespace . '\SectionController', 'create'],
             [clout_settings('clout_url') . '/settings/sections/store', $this->namespace . '\SectionController', 'store'],

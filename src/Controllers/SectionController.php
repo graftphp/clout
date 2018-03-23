@@ -6,7 +6,6 @@ use GraftPHP\Clout\Field;
 use GraftPHP\Clout\FieldType;
 use GraftPHP\Clout\Relationship;
 use GraftPHP\Clout\Section;
-use GraftPHP\Clout\Settings;
 use GraftPHP\Framework\Functions;
 use GraftPHP\Framework\View;
 
