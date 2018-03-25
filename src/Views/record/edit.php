@@ -2,46 +2,46 @@
 
 {body}
 
-    <h1>Edit <?= $section->name ?></h1>
+    <h1>Edit <?=$section->name?></h1>
 
-    <form method="post" action="<?= clout_settings('clout_url')?>/sections/<?= $section->slug ?>/<?= $record->id ?>/update"
+    <form method="post" action="<?=clout_settings('clout_url')?>/sections/<?=$section->slug?>/<?=$record->id?>/update"
         class="uk-form uk-form-horizontal"  enctype="multipart/form-data">
-
-        <?php foreach ($section->fields() as $field) : ?>
-            <div id="field-<?= $field->id ?>" class="uk-margin">
+        <?=csrf_field()?>
+        <?php foreach ($section->fields() as $field): ?>
+            <div id="field-<?=$field->id?>" class="uk-margin">
                 <div>
-                    <label class="uk-form-label for="f<?= $field->id ?>"><?= $field->name ?></label>
+                    <label class="uk-form-label for="f<?=$field->id?>"><?=$field->name?></label>
                     <div class="uk-form-controls">
-                    <?= \GraftPHP\Clout\Fieldtype::render($field->type, 'f' . $field->id, $record->{$field->name}) ?>
-                    <?php if ($field->type == 8 && !empty($record->{$field->name})) : ?>
-                        <div id="images-<?= $field->id ?>">
+                    <?=\GraftPHP\Clout\Fieldtype::render($field->type, 'f' . $field->id, $record->{$field->name})?>
+                    <?php if ($field->type == 8 && !empty($record->{$field->name})): ?>
+                        <div id="images-<?=$field->id?>">
                             <div>
-                                <?php foreach (json_decode($record->{$field->name}) as $_image) : ?>
-                                    <img src="<?= clout_settings('storage_url')?>/<?= $record->id ?>/<?= $field->id ?>/<?= $_image->file ?>"
+                                <?php foreach (json_decode($record->{$field->name}) as $_image): ?>
+                                    <img src="<?=clout_settings('storage_url')?>/<?=$record->id?>/<?=$field->id?>/<?=$_image->file?>"
                                         width="100" />
-                                <?php endforeach; ?>
+                                <?php endforeach;?>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    <?php endif;?>
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php endforeach;?>
         <hr />
-        <?php foreach($section->relationships() as $relationship) : ?>
+        <?php foreach ($section->relationships() as $relationship): ?>
             <div class="uk-margin">
-                <label class="uk-form-label"><?= $relationship->name ?></label>
+                <label class="uk-form-label"><?=$relationship->name?></label>
                 <div class="uk-form-controls">
-                    <?php foreach (\GraftPHP\Clout\Output::list($relationship->childSection()->slug)->all() as $option) : ?>
+                    <?php foreach (\GraftPHP\Clout\Output::list($relationship->childSection()->slug)->all() as $option): ?>
                         <div><label>
-                            <input type="<?= $relationship->multiple ? 'checkbox' : 'radio' ?>"
-                                class="uk-checkbox" value="<?= $option->id ?>" name="r<?= $relationship->id ?>[]">
-                            <?= $option->value ?>
+                            <input type="<?=$relationship->multiple ? 'checkbox' : 'radio'?>"
+                                class="uk-checkbox" value="<?=$option->id?>" name="r<?=$relationship->id?>[]">
+                            <?=$option->value?>
                         </label></div>
-                    <?php endforeach; ?>
+                    <?php endforeach;?>
                 </div>
             </div>
-        <?php endforeach; ?>
+        <?php endforeach;?>
 
         <div class="uk-margin">
             <div class="uk-form-controls">
@@ -54,16 +54,16 @@
 {/body}
 
 {script}
-<?php foreach ($section->fields() as $field) : ?>
-<?php if ($field->type == 7 || $field->type == 8) : ?>
+<?php foreach ($section->fields() as $field): ?>
+<?php if ($field->type == 7 || $field->type == 8): ?>
 <script>
 $(function() { $.ajaxSetup({ cache: false }); });
 
-    var bar = document.getElementById('bar-<?= $field->id ?>');
+    var bar = document.getElementById('bar-<?=$field->id?>');
 
-    UIkit.upload('#upload-<?= $field->id ?>', {
+    UIkit.upload('#upload-<?=$field->id?>', {
 
-        url: '<?= clout_settings('clout_url')?>/upload/<?= $record->id ?>/<?= $field->id ?>',
+        url: '<?=clout_settings('clout_url')?>/upload/<?=$record->id?>/<?=$field->id?>',
         multiple: false,
         loadStart: function (e) {
             console.log('loadStart', arguments);
@@ -82,7 +82,7 @@ $(function() { $.ajaxSetup({ cache: false }); });
         },
         completeAll: function () {
             console.log('complete');
-            $('#images-<?= $field->id ?>').load('/clout/sections/portfolio/<?= $record->id ?>/edit #images-<?= $field->id ?> div');
+            $('#images-<?=$field->id?>').load('/clout/sections/portfolio/<?=$record->id?>/edit #images-<?=$field->id?> div');
             setTimeout(function () {
                 bar.setAttribute('hidden', 'hidden');
             }, 1000);
@@ -91,6 +91,6 @@ $(function() { $.ajaxSetup({ cache: false }); });
     });
 
 </script>
-<?php endif; ?>
-<?php endforeach; ?>
+<?php endif;?>
+<?php endforeach;?>
 {/script}

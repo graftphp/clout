@@ -2,11 +2,11 @@
 
 {body}
 
-<h1>Update the <?= $section->name ?> Section</h1>
+<h1>Update the <?=$section->name?> Section</h1>
 
-<form method="post" action="<?= clout_settings('clout_url')?>/settings/sections/<?= $section->id ?>/update"
+<form method="post" action="<?=clout_settings('clout_url')?>/settings/sections/<?=$section->id?>/update"
     class="uk-form uk-form-horizontal">
-
+    <?=csrf_field()?>
     <div>
         <label class="uk-form-label" for="name">
             Section Name
@@ -40,34 +40,34 @@
     </table>
 
     <div id="fields-sortable" class="uk-sortable" data-uk-sortable="{handleClass:'uk-sortable-handle', dragCustomClass:'uk-hidden'}">
-        <?php if ($section->fields()) : ?>
-            <?php foreach($section->fields() as $field) : ?>
+        <?php if ($section->fields()): ?>
+            <?php foreach ($section->fields() as $field): ?>
                 <table class="uk-table">
                     <tbody>
                         <tr class="field uk-form">
-                            <input type="hidden" name="field-id[]" value="<?= $field->id ?>">
-                            <input type="hidden" name="field-order[]" class="field-order" value="<?= $field->order ?>">
+                            <input type="hidden" name="field-id[]" value="<?=$field->id?>">
+                            <input type="hidden" name="field-order[]" class="field-order" value="<?=$field->order?>">
                             <td>
-                                <input type="text" name="field-name[]" class="uk-input" value="<?= $field->name ?>">
+                                <input type="text" name="field-name[]" class="uk-input" value="<?=$field->name?>">
                             </td>
                             <td width="200">
                                 <select name="field-type[]" class="uk-select">
                                     <?php foreach ($fieldtypes as $fieldtype): ?>
-                                    <option value="<?=$fieldtype->id ?>" <?= $field->type == $fieldtype->id ? ' selected' : '' ?>>
-                                        <?= $fieldtype->name ?>
+                                    <option value="<?=$fieldtype->id?>" <?=$field->type == $fieldtype->id ? ' selected' : ''?>>
+                                        <?=$fieldtype->name?>
                                     </option>
                                     <?php endforeach;?>
                                 </select>
                             </td>
                             <td width="75">
                                 <select name="field-list[]" class="uk-select">
-                                    <option value="1" <?= $field->list ? 'selected' : '' ?>>Yes</option>
-                                    <option value="0" <?= !$field->list ? 'selected' : '' ?>>No</option>
+                                    <option value="1" <?=$field->list ? 'selected' : ''?>>Yes</option>
+                                    <option value="0" <?=!$field->list ? 'selected' : ''?>>No</option>
                                 </select>
                             </td>
                             <td width="30" class="uk-text-center">
-                                <input type="radio" name="slug" value="1" <?= $field->slug ? 'checked' : '' ?> class="uk-radio" required>
-                                <input type="hidden" name="field-slug[]" value="<?= $field->slug ? '1' : '0' ?>">
+                                <input type="radio" name="slug" value="1" <?=$field->slug ? 'checked' : ''?> class="uk-radio" required>
+                                <input type="hidden" name="field-slug[]" value="<?=$field->slug ? '1' : '0'?>">
                             </td>
                             <td width="30">
                                 <button type="button" class="delete-field uk-icon-button uk-button-danger"
@@ -81,8 +81,8 @@
                         </tr>
                     </tbody>
                 </table>
-            <?php endforeach; ?>
-        <?php endif; ?>
+            <?php endforeach;?>
+        <?php endif;?>
     </div>
 
     <hr />
@@ -105,28 +105,28 @@
             </thead>
         </table>
         <div id="relationships-sortable">
-            <?php if ($section->relationships()) : ?>
-                <?php foreach ($section->relationships() as $relationship) : ?>
+            <?php if ($section->relationships()): ?>
+                <?php foreach ($section->relationships() as $relationship): ?>
                 <table class="uk-table">
                     <tr class="relationship">
-                        <input type="hidden" name="relationship-id[]" value="<?= $relationship->id ?>">
+                        <input type="hidden" name="relationship-id[]" value="<?=$relationship->id?>">
                         <td width="200">
-                            <input type="text" name="relationship-name[]" value="<?= $relationship->name ?>" class="relationship-id uk-input">
+                            <input type="text" name="relationship-name[]" value="<?=$relationship->name?>" class="relationship-id uk-input">
                         </td>
                         <td width="200">
                             <select name="relationship-section[]" class="uk-select">
-                                <?php foreach($sections as $section) : ?>
-                                    <option value="<?= $section->id ?>"
-                                        <?=$relationship->child_section == $section->id ? ' selected' : '' ?>>
-                                        <?= $section->name ?>
+                                <?php foreach ($sections as $section): ?>
+                                    <option value="<?=$section->id?>"
+                                        <?=$relationship->child_section == $section->id ? ' selected' : ''?>>
+                                        <?=$section->name?>
                                     </option>
-                                <?php endforeach; ?>
+                                <?php endforeach;?>
                             </select>
                         </td>
                         <td width="50">
                             <select name="relationship-multiple[]" class="uk-select">
-                                <option value="1" <?= $relationship->multiple ? ' selected' : '' ?>>Yes</option>
-                                <option value="0" <?= !$relationship->multiple ? ' selected' : '' ?>>No</option>
+                                <option value="1" <?=$relationship->multiple ? ' selected' : ''?>>Yes</option>
+                                <option value="0" <?=!$relationship->multiple ? ' selected' : ''?>>No</option>
                             </select>
                         </td>
                         <td width="50">
@@ -135,8 +135,8 @@
                         </td>
                     </tr>
                 </table>
-                <?php endforeach; ?>
-            <?php endif; ?>
+                <?php endforeach;?>
+            <?php endif;?>
         </div>
 
     <hr />
@@ -156,7 +156,7 @@
             <select name="field-type[]" class="uk-width-1-1 uk-select">
                 <?php foreach ($fieldtypes as $fieldtype): ?>
                 <option value="<?=$fieldtype->id?>">
-                    <?= $fieldtype->name ?>
+                    <?=$fieldtype->name?>
                 </option>
                 <?php endforeach;?>
             </select>
@@ -191,9 +191,9 @@
         </td>
         <td width="200">
             <select name="relationship-section[]" class="uk-select">
-                <?php foreach($sections as $section) : ?>
-                    <option value="<?= $section->id ?>"><?= $section->name ?></option>
-                <?php endforeach; ?>
+                <?php foreach ($sections as $section): ?>
+                    <option value="<?=$section->id?>"><?=$section->name?></option>
+                <?php endforeach;?>
             </select>
         </td>
         <td width="50">

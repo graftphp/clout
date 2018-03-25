@@ -5,6 +5,7 @@
 
     <div class="uk-cover-container">
         <form method="post" action="<?=clout_settings('clout_url')?>/settings/update">
+            <?=csrf_field()?>
             <table class="uk-table uk-table-strpied uk-table-hover">
                 <thead>
                     <tr>
