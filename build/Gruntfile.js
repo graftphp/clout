@@ -1,9 +1,9 @@
 js_files = {
     '../src/Assets/script.js': [
-        'bower_components/jquery/dist/jquery.js',
-        'bower_components/uikit/dist/js/uikit.js',
-        'bower_components/uikit/dist/js/uikit-icons.js',
-        'bower_components/tinymce/tinymce.js',
+        'node_modules/jquery/dist/jquery.js',
+        'node_modules/uikit/dist/js/uikit.js',
+        'node_modules/uikit/dist/js/uikit-icons.js',
+        'node_modules/tinymce/tinymce.js',
         './js/**/*.js'
     ]
 };

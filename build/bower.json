@@ -1,8 +1,0 @@
-{
-  "name": "clout",
-  "dependencies": {
-    "jquery": "*",
-    "uikit": "3.*",
-    "tinymce": "^4.7.3"
-  }
-}
