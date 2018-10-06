@@ -67,7 +67,7 @@ class CloutController
     public function login()
     {
         if (isset($_SESSION['userid'])) {
-            Functions::redirect(clout_settings('url') . '/home');
+            Functions::redirect(clout_settings('clout_url') . '/home');
         }
 
         View::Render('login', $this->data, clout_settings('view_folder'));
