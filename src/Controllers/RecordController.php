@@ -4,12 +4,10 @@ namespace GraftPHP\Clout\Controllers;
 
 use GraftPHP\Clout\Data;
 use GraftPHP\Clout\Field;
-use GraftPHP\Clout\FieldType;
+use GraftPHP\Clout\Output;
 use GraftPHP\Clout\Record;
 use GraftPHP\Clout\Relation;
 use GraftPHP\Clout\Section;
-use GraftPHP\Clout\Settings;
-use GraftPHP\Clout\Output;
 use GraftPHP\Framework\Functions;
 use GraftPHP\Framework\View;
 
@@ -113,7 +111,7 @@ class RecordController extends CloutController
             }
             $name = 'r' . $relationship->id;
             if (isset($_POST[$name])) {
-                foreach($_POST[$name] as $item) {
+                foreach ($_POST[$name] as $item) {
                     $relation = new Relation();
                     $relation->relationship = $relationship->id;
                     $relation->parent = $record->id;
