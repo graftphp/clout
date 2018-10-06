@@ -3,17 +3,18 @@
 namespace GraftPHP\Clout;
 
 use GraftPHP\Clout\Section;
+use GraftPHP\Framework\Data;
 use GraftPHP\Framework\DB;
 use GraftPHP\Framework\MagicCall;
 
-class Output
+class Output extends DB
 {
     use MagicCall;
 
     public function all()
     {
         $db = new DB();
-        $this->sql .= " GROUP BY r.id;";
+        $this->sql .= $this->where . " GROUP BY r.id;";
         $q = $db->db->query($this->sql);
         $res = $q->fetchAll(\PDO::FETCH_OBJ);
 
@@ -27,7 +28,7 @@ class Output
 
     public function find($id)
     {
-        $this->sql .= "\r\n AND r.id = " . intval($id);
+        $this->where .= " AND r.id = " . intval($id);
         $out = $this->all();
         $out = reset($out);
 
@@ -36,10 +37,24 @@ class Output
         } else {
             foreach ($this->section->relationships() as $relationship) {
                 $out->{$relationship->name} = Relation::where('relationship', '=', $relationship->id)
-                ->where('parent', '=', $id)
-                ->get();
+                    ->where('parent', '=', $id)
+                    ->get();
             }
             return $out;
+        }
+    }
+
+    public function get($cols = null)
+    {
+        $this->sql .= $this->where;
+
+        $this->run();
+
+        if ($this->query->rowCount() > 0) {
+            $data = $this->query->fetchAll(\PDO::FETCH_OBJ);
+            return Data::populate((object) $data);
+        } else {
+            return new Data;
         }
     }
 
@@ -50,8 +65,9 @@ class Output
 
         $this->sql = "SELECT r.id AS `id`, d." . $slug->type()->datafield . " AS `value`
             FROM clout_record r
-            INNER JOIN clout_data d ON r.id = d.record AND d.field = " . $slug->id . "
-            WHERE r.section = " . intval($this->section->id);
+            INNER JOIN clout_data d ON r.id = d.record AND d.field = " . $slug->id;
+
+        $this->where .= " AND r.section = " . intval($this->section->id);
 
         return $this;
     }
@@ -64,7 +80,7 @@ class Output
             dd('Section not found - ' . $slug);
         }
 
-        $this->sql = "SELECT r.id";
+        $this->sql = "SELECT r.id, r.slug";
         foreach ($this->section->fields() as $field) {
             $type = $field->type();
             $this->sql .= ",\r\n GROUP_CONCAT(
@@ -73,7 +89,8 @@ class Output
         }
         $this->sql .= "\r\nFROM clout_record r \r\n";
         $this->sql .= "LEFT JOIN clout_data d ON d.record = r.id\r\n";
-        $this->sql .= "WHERE r.section = " . intval($this->section->id);
+
+        $this->where .= "AND r.section = " . intval($this->section->id);
 
         return $this;
     }
