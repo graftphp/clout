@@ -2,8 +2,15 @@
 
 namespace GraftPHP\Clout\Controllers;
 
+use GraftPHP\Clout\Data;
+use GraftPHP\Clout\Field;
+use GraftPHP\Clout\FieldType;
+use GraftPHP\Clout\Record;
+use GraftPHP\Clout\Relation;
+use GraftPHP\Clout\Relationship;
 use GraftPHP\Clout\Section;
 use GraftPHP\Clout\Setting;
+use GraftPHP\Clout\User;
 use GraftPHP\Framework\Functions;
 use GraftPHP\Framework\View;
 
@@ -15,29 +22,31 @@ class CloutController
             if (
                 $_SERVER['REQUEST_URI'] != clout_settings('clout_url')
                 && $_SERVER['REQUEST_URI'] != clout_settings('clout_url') . '/login'
-                && substr($_SERVER['REQUEST_URI'], 0, strlen(clout_settings('storage_url'))) === clout_settings('storage_url')
+                && substr($_SERVER['REQUEST_URI'], 0, strlen(clout_settings('storage_url'))) != clout_settings('storage_url')
             ) {
                 Functions::redirect(clout_settings('clout_url'));
             }
         }
 
-        if (GRAFT_CONFIG['DBHost'] == '' ||
-            GRAFT_CONFIG['DBName'] == '' ||
-            GRAFT_CONFIG['DBUser'] == '') {
-            die('A database connection is required to run clout.');
+        if (
+            (!isset(GRAFT_CONFIG['DBHost']) || empty(GRAFT_CONFIG['DBHost'])) ||
+            (!isset(GRAFT_CONFIG['DBName']) || empty(GRAFT_CONFIG['DBName'])) ||
+            (!isset(GRAFT_CONFIG['DBUser']) || empty(GRAFT_CONFIG['DBUser']))
+        ) {
+            dd('A database connection is required to run clout.');
         }
         // instance everything so the db gets setup
         // probably need a better way to do this
         // in the future #TODO
-        \GraftPHP\Clout\Data::build();
-        \GraftPHP\Clout\Field::build();
-        \GraftPHP\Clout\FieldType::build();
-        \GraftPHP\Clout\Record::build();
-        \GraftPHP\Clout\Relation::build();
-        \GraftPHP\Clout\Relationship::build();
-        \GraftPHP\Clout\Setting::build();
-        \GraftPHP\Clout\Section::build();
-        \GraftPHP\Clout\User::build();
+        Data::build();
+        Field::build();
+        FieldType::build();
+        Record::build();
+        Relation::build();
+        Relationship::build();
+        Setting::build();
+        Section::build();
+        User::build();
 
         $this->data['sections'] = Section::all();
     }
