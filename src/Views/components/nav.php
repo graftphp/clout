@@ -1,7 +1,5 @@
-<div class="uk-padding uk-background-secondary uk-height-1-1 uk-light">
-    <h1>Clout</h1>
-
-    <ul class="uk-nav uk-text-bold">
+<div class="uk-padding-small uk-background-secondary uk-height-1-1 uk-light uk-padding-remove-vertical">
+    <ul class="uk-nav">
         <li class="uk-nav-header">Content</li>
         <?php if($sections->count() > 0) : ?>
             <?php foreach($sections as $section) : ?>
@@ -12,16 +10,20 @@
             </li>
             <?php endforeach; ?>
         <?php else : ?>
-            <a href="<?= clout_settings('clout_url') ?>/settings/sections/create">Add a Section</a>
+            <a href="<?= clout_settings('clout_url') ?>/settings/sections/create"
+            class="uk-text-small">
+                <span uk-icon="icon: plus"></span>
+                <span class="uk-text-middle">&nbsp;Add section</span>
+            </a>
         <?php endif; ?>
     </ul>
     <ul class="uk-nav uk-margin-top uk-text-small">
-        <li class="uk-nav-header">System</li>
+        <li class="uk-nav-header">SETTINGS</li>
         <li>
             <a href="<?= clout_settings('clout_url') ?>/settings/sections"
             class="uk-text-muted">
                 <span uk-icon="icon: grid"></span>
-                <span class="uk-text-middle">&nbsp;Section Setup</span>
+                <span class="uk-text-middle">&nbsp;Sections</span>
             </a>
         </li>
         <li>
@@ -35,28 +37,7 @@
             <a href="<?= clout_settings('clout_url') ?>/settings"
             class="uk-text-muted">
                 <span uk-icon="icon: cog"></span>
-                <span class="uk-text-middle">&nbsp;System Settings</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://github.com/graftphp/clout/wiki" target="_blank"
-            class="uk-text-muted">
-                <span uk-icon="icon: info"></span>
-                <span class="uk-text-middle">&nbsp;Get help</span>
-            </a>
-        </li>
-        <li>
-            <a href="https://github.com/graftphp/clout/issues" target="_blank"
-            class="uk-text-muted">
-                <span uk-icon="icon: warning"></span>
-                <span class="uk-text-middle">&nbsp;Report a problem</span>
-            </a>
-        </li>
-        <li>
-            <a href="<?= clout_settings('clout_url') ?>/logout"
-            class="uk-text-muted">
-                <span uk-icon="icon: sign-out"></span>
-                <span class="uk-text-middle">&nbsp;Log out</span>
+                <span class="uk-text-middle">&nbsp;System</span>
             </a>
         </li>
     </ul>

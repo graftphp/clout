@@ -1,33 +1,33 @@
 {template:template}
 
-{body}
+{title}Update <?=$user->username?> User{/title}
 
-<h1>Update <?=$user->username?> User</h1>
+{body}
 
 <form method="post" action="<?=clout_settings('clout_url')?>/settings/users/<?=$user->id?>/update"
     class="uk-form uk-form-horizontal">
     <?=csrf_field()?>
     <div>
-        <label class="uk-form-label" for="name">
+        <label class="uk-form-label uk-text-right@m" for="name">
             Username
         </label>
         <div class="uk-form-controls">
-            <input type="text" name="username" class="uk-input" required
+            <input type="text" name="username" class="uk-input uk-form-small" required
             value="<?=$user->username?>">
         </div>
     </div>
-    <div>
-        <label class="uk-form-label">
+    <div class="uk-margin-top">
+        <label class="uk-form-label uk-text-right@m" for="password">
             Password
         </label>
         <div class="uk-form-controls">
-            <input type="text" name="password" class="uk-input"><br />
+            <input type="text" name="password" class="uk-input uk-form-small"><br />
             <small>(leave blank to keep current password)</small>
         </div>
     </div>
     <?php if ($user->id != 1): ?>
-    <div>
-        <label class="uk-form-label">
+    <div class="uk-margin-top">
+        <label class="uk-form-label uk-text-right@m">
             Active?
         </label>
         <div class="uk-form-controls">
@@ -40,7 +40,8 @@
     <?php endif;?>
     <div class="uk-margin-top">
         <div class="uk-form-controls">
-            <button type="submit" class="uk-button uk-button-primary">Update User</button>
+            <button type="submit" class="uk-button uk-button-small uk-button-primary">Update</button>
+            <a href="<?=clout_settings('clout_url')?>/settings/users" class="uk-button uk-button-small uk-button-default">Cancel</a>
         </div>
     </div>
 
