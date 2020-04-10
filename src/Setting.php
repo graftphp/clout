@@ -22,14 +22,13 @@ class Setting extends Model
         ['1', 'clout_url', '/clout'],
         ['2', 'view_folder', __DIR__ . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR],
         ['3', 'storage_path', __DIR__ . DIRECTORY_SEPARATOR . '_' . DIRECTORY_SEPARATOR . 'clout' . DIRECTORY_SEPARATOR],
-        ['4', 'storage_url', '/_/clout/'],
+        ['4', 'storage_url', '/clout/_/'],
         ['5', 'asset_folder', __DIR__ . '/Assets/'],
         ['6', 'wysiwyg_config', 'undo redo | bold italic underline | link | alignleft aligncenter alignright | bullist numlist | table'],
     ];
 
     public function __construct()
     {
-        // dd(clout_settings('clout_url'));
         // [url (string), controller (string), method (string)]
         $this->routes = [
             [clout_settings('clout_url') . '', $this->namespace . '\CloutController', 'login'],
