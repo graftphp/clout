@@ -35,18 +35,20 @@ class CloutController
         ) {
             dd('A database connection is required to run clout.');
         }
-        // instance everything so the db gets setup
-        // probably need a better way to do this
-        // in the future #TODO
-        Data::build();
-        Field::build();
-        FieldType::build();
-        Record::build();
-        Relation::build();
-        Relationship::build();
-        Setting::build();
-        Section::build();
-        User::build();
+
+        // instance everything to check/set db once per session
+        if (!isset($_SESSION['clout_boot'])) {
+            Data::build();
+            Field::build();
+            FieldType::build();
+            Record::build();
+            Relation::build();
+            Relationship::build();
+            Setting::build();
+            Section::build();
+            User::build();
+            $_SESSION['clout_boot'] = true;
+        }
 
         $this->data['sections'] = Section::all();
     }
