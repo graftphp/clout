@@ -89,15 +89,17 @@ class SectionController extends CloutController
         // add/update fields in the POST data
         if (isset($_POST['field-name'])) {
             for ($f = 0; $f < count($_POST['field-id']); $f++) {
-                $field = new Field();
-                $field->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);
-                $field->section = $section->id;
-                $field->name = $_POST['field-name'][$f];
-                $field->type = $_POST['field-type'][$f];
-                $field->order = $_POST['field-order'][$f];
-                $field->list = $_POST['field-list'][$f];
-                $field->slug = $_POST['field-slug'][$f];
-                $field->save();
+                if (!empty($_POST['field-name'][$f])) {
+                    $field = new Field();
+                    $field->id = ($_POST['field-id'][$f] != '' ? $_POST['field-id'][$f] : null);
+                    $field->section = $section->id;
+                    $field->name = $_POST['field-name'][$f];
+                    $field->type = $_POST['field-type'][$f];
+                    $field->order = $_POST['field-order'][$f];
+                    $field->list = $_POST['field-list'][$f];
+                    $field->slug = $_POST['field-slug'][$f];
+                    $field->save();
+                }
             }
         }
 
@@ -119,13 +121,15 @@ class SectionController extends CloutController
         // add/update relationships in the POST data
         if (isset($_POST['relationship-name'])) {
             for ($r = 0; $r < count($_POST['relationship-id']); $r++) {
-                $relationship = new Relationship();
-                $relationship->id = ($_POST['relationship-id'][$r] != '' ? $_POST['field_id'][$r] : null);
-                $relationship->name = $_POST['relationship-name'][$r];
-                $relationship->parent_section = $section->id;
-                $relationship->child_section = $_POST['relationship-section'][$r];
-                $relationship->multiple = $_POST['relationship-multiple'][$r];
-                $relationship->save();
+                if (!empty($_POST['relationship-name'][$r])) {
+                    $relationship = new Relationship();
+                    $relationship->id = ($_POST['relationship-id'][$r] != '' ? $_POST['field_id'][$r] : null);
+                    $relationship->name = $_POST['relationship-name'][$r];
+                    $relationship->parent_section = $section->id;
+                    $relationship->child_section = $_POST['relationship-section'][$r];
+                    $relationship->multiple = $_POST['relationship-multiple'][$r];
+                    $relationship->save();
+                }
             }
         }
         Functions::redirect(clout_settings('clout_url') . '/settings/sections/' . $section->id);

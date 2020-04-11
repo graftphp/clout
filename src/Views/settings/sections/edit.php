@@ -7,6 +7,10 @@
 <form method="post" action="<?=clout_settings('clout_url')?>/settings/sections/<?=$section->id?>/update"
     class="uk-form uk-form-horizontal">
     <?=csrf_field()?>
+    <div class="uk-float-right">
+        <button type="submit" class="uk-button uk-button-small uk-button-primary">Update</button>
+        <a href="<?=clout_settings('clout_url')?>/settings/sections" class="uk-button uk-button-small uk-button-default">Cancel</a>
+    </div>
 
     <ul uk-tab>
         <li><a href="#">Properties</a></li>

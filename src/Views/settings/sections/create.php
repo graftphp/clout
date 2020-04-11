@@ -16,13 +16,11 @@
         </div>
     </div>
     <div class="uk-margin-top">
-        <div class="uk-form-label uk-margin-remove">
-            <a href="<?=clout_settings('clout_url')?>/settings/users" class="uk-button uk-button-small uk-button-default">Cancel</a>
-        </div>
         <div class="uk-form-controls">
             <button type="submit" class="uk-button uk-button-primary uk-button-small">
                 Create
             </button>
+            <a href="<?=clout_settings('clout_url')?>/settings/users" class="uk-button uk-button-small uk-button-default">Cancel</a>
         </div>
     </div>
 
