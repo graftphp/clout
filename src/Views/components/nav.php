@@ -20,6 +20,12 @@
     <ul class="uk-nav uk-margin-top uk-text-small">
         <li class="uk-nav-header">SETTINGS</li>
         <li>
+            <a href="<?= clout_settings('clout_url') ?>/settings/sites" class="uk-text-muted">
+                <span uk-icon="icon: location"></span>
+                <span class="uk-text-middle">&nbsp;Sites</span>
+            </a>
+        </li>
+        <li>
             <a href="<?= clout_settings('clout_url') ?>/settings/sections"
             class="uk-text-muted">
                 <span uk-icon="icon: grid"></span>
