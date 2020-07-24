@@ -1,10 +1,10 @@
 {
   "devDependencies": {
     "grunt": "",
+    "grunt-contrib-copy": "",
     "grunt-contrib-less": "",
     "grunt-contrib-uglify": "",
-    "grunt-contrib-watch": "",
-    "grunt-contrib-copy": ""
+    "grunt-contrib-watch": ""
   },
   "dependencies": {
     "jquery": "^3.5.0",
