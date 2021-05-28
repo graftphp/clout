@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "jquery": "^3.5.0",
-    "tinymce": "^4.7.9",
+    "tinymce": "^5.7.1",
     "uikit": "^3.0.0"
   }
 }
